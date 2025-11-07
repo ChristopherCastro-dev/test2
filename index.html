@@ -1,0 +1,3712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christopher Castro - Software Engineering Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Global Styles */
+        :root {
+            --primary-color: #782F40;
+            --secondary-color: #9A4A5C;
+            --light-color: #F2E6E9;
+            --dark-gray: #666666;
+            --medium-gray: #F5F0F1;
+            --light-gray: #f8f9fa;
+            --white: #ffffff;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: var(--white);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Reset Button Styles */
+        .reset-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            z-index: 99;
+            font-size: 1.5rem;
+        }
+
+        .reset-button:hover {
+            background-color: var(--secondary-color);
+            transform: scale(1.1);
+        }
+
+        /* Home Page Styles */
+        .home-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .profile-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .profile-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid var(--primary-color);
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-name {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .profile-title {
+            font-size: 1.5rem;
+            color: var(--dark-gray);
+            margin-bottom: 2rem;
+        }
+
+        .home-subtitle {
+            font-size: 1.25rem;
+            color: var(--dark-gray);
+            margin-bottom: 3rem;
+        }
+
+        .animated-button {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 1rem 2.5rem;
+            font-size: 1.25rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            animation: bounce 2s infinite;
+        }
+
+        .animated-button:hover {
+            background-color: var(--secondary-color);
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        /* Back Button Styles */
+        .back-button-container {
+            margin-bottom: 2rem;
+        }
+
+        .back-button {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .back-button:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* Instructions Styles */
+        .instructions {
+            background-color: var(--light-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .instructions h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .instructions ul {
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .instructions li {
+            margin-bottom: 0.5rem;
+        }
+
+        .instructions p {
+            margin-bottom: 0.75rem;
+        }
+
+        /* Languages Grid Styles */
+        .languages-page {
+            padding: 4rem 0;
+        }
+
+        .page-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        .languages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .language-card {
+            background-color: var(--white);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .language-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .language-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .language-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        /* Project Grid Styles */
+        .projects-page {
+            padding: 4rem 0;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            background-color: var(--medium-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark-gray);
+            font-size: 1.25rem;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-description {
+            color: var(--dark-gray);
+            margin-bottom: 1rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tech-tag {
+            background-color: var(--light-color);
+            color: var(--primary-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .project-link {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .project-link:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* Input Section Styles */
+        .input-section {
+            background-color: var(--light-gray);
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .input-group {
+            margin-bottom: 0.75rem;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 0.25rem;
+            font-weight: 500;
+            color: var(--dark-gray);
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .input-group select {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .update-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+            margin-top: 0.5rem;
+        }
+
+        .update-button:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* Code Runner Styles */
+        .code-runner {
+            background-color: #1e1e1e;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 1rem;
+        }
+
+        .code-header {
+            background-color: #2d2d2d;
+            padding: 0.75rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .code-title {
+            color: #fff;
+            font-weight: 500;
+        }
+
+        .run-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .run-button:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .code-content {
+            padding: 1rem;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .code-output {
+            background-color: #2d2d2d;
+            color: #fff;
+            padding: 1rem;
+            border-top: 1px solid #444;
+            min-height: 100px;
+            max-height: 200px;
+            overflow-y: auto;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+
+        .code-output.loading {
+            color: #aaa;
+            font-style: italic;
+        }
+
+        pre {
+            color: #d4d4d4;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            margin: 0;
+        }
+
+        /* Email Page Styles */
+        .email-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .email-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+
+        .email-address {
+            font-size: 1.5rem;
+            background-color: var(--light-color);
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background-color: var(--medium-gray);
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer-link {
+            color: var(--dark-gray);
+            transition: var(--transition);
+        }
+
+        .footer-link:hover {
+            color: var(--primary-color);
+        }
+
+        .copyright {
+            color: var(--dark-gray);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .profile-name {
+                font-size: 2rem;
+            }
+            
+            .profile-title {
+                font-size: 1.25rem;
+            }
+
+            .home-title {
+                font-size: 2.25rem;
+            }
+
+            .navbar-container {
+                flex-direction: column;
+            }
+
+            .nav-links {
+                margin-top: 1rem;
+            }
+
+            .nav-links li {
+                margin-left: 1rem;
+                margin-right: 1rem;
+            }
+
+            .languages-grid,
+            .projects-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .profile-name {
+                font-size: 1.75rem;
+            }
+            
+            .profile-title {
+                font-size: 1rem;
+            }
+
+            .home-title {
+                font-size: 1.75rem;
+            }
+
+            .home-subtitle {
+                font-size: 1rem;
+            }
+
+            .animated-button {
+                padding: 0.75rem 1.5rem;
+                font-size: 1rem;
+            }
+
+            .languages-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animation Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container navbar-container">
+            <a href="#" class="logo" onclick="navigateToHome()">Online Portfolio</a>
+            <ul class="nav-links">
+                <li><a href="#" onclick="navigateToHome()">Home</a></li>
+                <li><a href="https://linkedin.com/in/christopher-castro-b60011294" target="_blank">LinkedIn</a></li>
+                <li><a href="#" onclick="navigateToEmail()">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Reset Button -->
+    <button class="reset-button" onclick="navigateToHome()" title="Reset to Home">↺</button>
+
+    <!-- Home Page -->
+    <section id="home" class="home-page">
+        <div class="profile-container">
+            <div class="profile-image">
+                <img src="https://sanishtech.com/i/690c4d726726b-1762413938.png" alt="Christopher Castro">
+            </div>
+            <h1 class="profile-name">Christopher Castro</h1>
+            <h2 class="profile-title">Software & Cybersecurity Engineering Portfolio</h2>
+        </div>
+        <p class="home-subtitle">Click Below to Explore My Work</p>
+        <button class="animated-button" onclick="navigateToLanguages()">Enter Portfolio</button>
+    </section>
+
+    <!-- Languages Grid Page (Initially Hidden) -->
+    <section id="languages" class="languages-page" style="display: none;">
+        <div class="container">
+            <h2 class="page-title">My Technical Skills</h2>
+            <div class="languages-grid">
+                <div class="language-card" onclick="navigateToProjects('cpp')">
+                    <div class="language-icon">⚙️</div>
+                    <h3 class="language-name">C++</h3>
+                </div>
+                <div class="language-card" onclick="navigateToProjects('java')">
+                    <div class="language-icon">☕</div>
+                    <h3 class="language-name">Java</h3>
+                </div>
+                <div class="language-card" onclick="navigateToProjects('htmlcss')">
+                    <div class="language-icon">🌐</div>
+                    <h3 class="language-name">HTML/CSS</h3>
+                </div>
+                <div class="language-card" onclick="navigateToProjects('sql')">
+                    <div class="language-icon">🗃️</div>
+                    <h3 class="language-name">SQL</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- C++ Projects Page (Initially Hidden) -->
+    <section id="cpp-projects" class="projects-page" style="display: none;">
+        <div class="container">
+            <div class="back-button-container">
+                <button class="back-button" onclick="navigateToLanguages()">← Back to Languages</button>
+            </div>
+            <h2 class="page-title">C++ Programming Projects</h2>
+            
+            <div class="instructions">
+                <h3>📋 How to Use These C++ Projects</h3>
+                <p>Each C++ project includes interactive features that simulate program execution:</p>
+                <ul>
+                    <li><strong>Modify Input Values:</strong> Change the values in the input fields to test different scenarios</li>
+                    <li><strong>Run Code:</strong> Click the "Run Code" button to see the program output with your inputs</li>
+                    <li><strong>Dynamic Inputs:</strong> Some projects allow you to add more input fields as needed</li>
+                    <li><strong>View Code:</strong> Examine the C++ source code in the code viewer below each project</li>
+                </ul>
+                <p>Try different input combinations to see how each program responds!</p>
+            </div>
+            
+            <div class="projects-grid" id="cpp-projects-grid">
+                <!-- C++ projects will be dynamically inserted here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Java Projects Page (Initially Hidden) -->
+    <section id="java-projects" class="projects-page" style="display: none;">
+        <div class="container">
+            <div class="back-button-container">
+                <button class="back-button" onclick="navigateToLanguages()">← Back to Languages</button>
+            </div>
+            <h2 class="page-title">Java Programming Projects</h2>
+            
+            <div class="instructions">
+                <h3>📋 How to Use These Java Projects</h3>
+                <p>These Java applications demonstrate object-oriented programming concepts:</p>
+                <ul>
+                    <li><strong>Select Options:</strong> Use dropdown menus to choose between different program modes</li>
+                    <li><strong>Customize Inputs:</strong> Modify text and numerical values to test various scenarios</li>
+                    <li><strong>Run Simulations:</strong> Click "Run Code" to see how the Java programs process your inputs</li>
+                    <li><strong>Study Code Structure:</strong> Examine the Java classes, methods, and OOP patterns</li>
+                </ul>
+                <p>These projects showcase inheritance, polymorphism, file I/O, and exception handling.</p>
+            </div>
+            
+            <div class="projects-grid" id="java-projects-grid">
+                <!-- Java projects will be dynamically inserted here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- HTML/CSS Projects Page (Initially Hidden) -->
+    <section id="htmlcss-projects" class="projects-page" style="display: none;">
+        <div class="container">
+            <div class="back-button-container">
+                <button class="back-button" onclick="navigateToLanguages()">← Back to Languages</button>
+            </div>
+            <h2 class="page-title">HTML/CSS Projects</h2>
+            
+            <div class="instructions">
+                <h3>📋 How to View These Web Projects</h3>
+                <p>These are live web applications that I've developed:</p>
+                <ul>
+                    <li><strong>Click Project Links:</strong> Use the "View Project" buttons to open the live applications</li>
+                    <li><strong>External Sites:</strong> Projects will open in new tabs for full functionality</li>
+                    <li><strong>Interactive Features:</strong> These are complete web applications with user interfaces</li>
+                    <li><strong>Real Projects:</strong> These are deployed applications, not just code examples</li>
+                </ul>
+                <p>Note: Some projects may require specific browsers or have authentication features.</p>
+            </div>
+            
+            <div class="projects-grid" id="htmlcss-projects-grid">
+                <!-- HTML/CSS projects will be inserted here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- SQL Projects Page (Initially Hidden) -->
+    <section id="sql-projects" class="projects-page" style="display: none;">
+        <div class="container">
+            <div class="back-button-container">
+                <button class="back-button" onclick="navigateToLanguages()">← Back to Languages</button>
+            </div>
+            <h2 class="page-title">SQL Database Projects</h2>
+            
+            <div class="instructions">
+                <h3>📋 How to Use These SQL Projects</h3>
+                <p>These database projects demonstrate SQL schema design and querying:</p>
+                <ul>
+                    <li><strong>Select Query Type:</strong> Use dropdown menus to choose different database queries</li>
+                    <li><strong>Run Queries:</strong> Click "Run Query" to see the results of SQL operations</li>
+                    <li><strong>Study Schema:</strong> Examine the database structure in the code viewer</li>
+                    <li><strong>Sample Data:</strong> Results show realistic data based on the database design</li>
+                </ul>
+                <p>These projects cover database normalization, relationships, and complex query operations.</p>
+            </div>
+            
+            <div class="projects-grid" id="sql-projects-grid">
+                <!-- SQL projects will be dynamically inserted here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Email Page (Initially Hidden) -->
+    <section id="email" class="email-page" style="display: none;">
+        <div class="container">
+            <h2 class="email-title">Contact Me</h2>
+            <div class="email-address">Christophermcastro@gmail.com</div>
+            <p style="margin-bottom: 2rem; color: var(--dark-gray);">Feel free to reach out for collaborations, opportunities, or just to connect!</p>
+            <button class="back-button" onclick="navigateToHome()">Back to Home</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-links">
+                <a href="#" onclick="navigateToHome()" class="footer-link">Home</a>
+                <a href="https://linkedin.com/in/christopher-castro-b60011294" class="footer-link" target="_blank">LinkedIn</a>
+                <a href="#" onclick="navigateToEmail()" class="footer-link">Contact</a>
+            </div>
+            <p class="copyright">© 2023 Christopher Castro Portfolio. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // C++ Project Data with executable code
+        const cppProjectsData = [
+            {
+                id: 1,
+                title: "Credit Card Qualification System",
+                description: "Determines eligibility for credit card based on salary and employment history.",
+                tech: ["C++", "Functions", "Conditional Logic", "Input Validation"],
+                code: `#include <iostream>
+using namespace std;
+
+void qualify(){
+    cout << "Congratulations! You qualify for the credit card.\\n";
+    cout << "The annual interest rate on this card is 12%.\\n"; 
+}
+void noQualify(){
+    cout << "Sorry, you do not qualify for the credit card.\\n";
+    cout << "To qualify, you must have worked at your current job\\n";
+    cout << "for at least 2 years and earn at least $17,000 annually.\\n";
+}
+
+int main()
+{
+    double salary;
+    int years;
+    
+    cout << "This program will determine if you qualify\\n";
+    cout << "for our credit card.\\n";
+    cout << "What is your annual salary? ";
+    cin >> salary;
+    cout << "How many years have you worked at your current job? ";
+    cin >> years;
+    
+    if (salary >= 17000.0 && years >= 2)
+        qualify();
+    else
+        noQualify();
+    
+    return 0;
+}`,
+                inputs: [
+                    { id: 'salary', label: 'Annual Salary ($):', type: 'number', value: '20000' },
+                    { id: 'years', label: 'Years at Current Job:', type: 'number', value: '3' }
+                ]
+            },
+            {
+                id: 2,
+                title: "Average Calculator with Functions",
+                description: "Calculates average of two numbers using modular functions.",
+                tech: ["C++", "Functions", "Modular Programming", "Parameters"],
+                code: `#include <iostream>
+using namespace std;
+
+void showAverage(double num1, double num2);
+
+int main()
+{
+    double number1, number2;
+
+    cout << "Enter the first number: ";
+    cin >> number1;
+    cout << "Enter the second number: ";
+    cin >> number2;
+    
+    showAverage(number1, number2);
+    
+    return 0;
+}
+
+void showAverage(double num1, double num2)
+{
+    double average = (num1 + num2) / 2.0;
+    cout << "The average of " << num1 << " and " << num2
+         << " is " << average << endl;
+}`,
+                inputs: [
+                    { id: 'num1', label: 'First Number:', type: 'number', value: '15' },
+                    { id: 'num2', label: 'Second Number:', type: 'number', value: '25' }
+                ]
+            },
+            {
+                id: 3,
+                title: "Number Equality Checker",
+                description: "Checks if two numbers are equal using boolean functions.",
+                tech: ["C++", "Boolean Functions", "Comparison", "Return Values"],
+                code: `#include <iostream>
+using namespace std;
+
+bool isEqual(int num1, int num2) {
+    return num1 == num2;
+}
+int main() {
+    int number1, number2;
+    
+    cout << "Enter the first integer: ";
+    cin >> number1;
+    
+    cout << "Enter the second integer: ";
+    cin >> number2;
+    
+    if (isEqual(number1, number2)) {
+        cout << "The numbers are equal." << endl;
+    } else {
+        cout << "The numbers are not equal." << endl;
+    }
+    
+    return 0;
+}`,
+                inputs: [
+                    { id: 'num1', label: 'First Integer:', type: 'number', value: '10' },
+                    { id: 'num2', label: 'Second Integer:', type: 'number', value: '10' }
+                ]
+            },
+            {
+                id: 4,
+                title: "Employee Absence Tracker",
+                description: "Calculates average employee absences with input validation.",
+                tech: ["C++", "Input Validation", "Loops", "Error Handling"],
+                code: `#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int getPositiveInput(const string& prompt) {
+    int value;
+    while (true) {
+        cout << prompt;
+        cin >> value;
+        if (value >= 0) return value;
+        cout << "Invalid input!\\n";
+        cin.clear();
+        cin.ignore(1000, '\\n');
+    }
+}
+
+int main() {
+    int numEmployees = getPositiveInput("Enter the number of employees: ");
+    int totalDays = 0;
+
+    for (int i = 1; i <= numEmployees; i++) {
+        string prompt = "Enter the days employee " + to_string(i) + " was absent: ";
+        totalDays += getPositiveInput(prompt);
+    }
+
+    double average = static_cast<double>(totalDays) / numEmployees;
+    cout << fixed << setprecision(1);
+    cout << "Average days out is " << average << " days.\\n";
+
+    return 0;
+}`,
+                dynamicInputs: true,
+                initialInputs: [
+                    { id: 'employees', label: 'Number of Employees:', type: 'number', value: '3' }
+                ]
+            },
+            {
+                id: 5,
+                title: "Student Grade Management System",
+                description: "Processes student grades and calculates final grades with attendance tracking.",
+                tech: ["C++", "File I/O", "Functions", "Grade Calculation"],
+                code: `#include <iostream>
+#include <cstdlib>
+#include <fstream>
+using namespace std;
+
+float averageQuizzes(int, int, int, int);
+int averageFinal(int, int, float);
+char getLetterGrade(int);
+void ifPassedClass(int, int);
+
+int main(int argc, char *argv[])
+{
+    // Simulated student data
+    string firstName = "John";
+    string lastName = "Doe";
+    int quiz1 = 85, quiz2 = 92, quiz3 = 78, quiz4 = 88;
+    int midterm = 82, final = 90, attendance = 32;
+    
+    float quizAvg = averageQuizzes(quiz1, quiz2, quiz3, quiz4);
+    int finalAvg = averageFinal(midterm, final, quizAvg);
+    char letterGrade = getLetterGrade(finalAvg);
+    
+    cout << lastName << ", " << firstName << "\\tAverage: " << finalAvg
+         << "\\tLetter Grade: " << letterGrade << endl;
+    
+    ifPassedClass(finalAvg, attendance);
+    cout << endl;
+
+    return 0;
+}
+
+float averageQuizzes(int q1, int q2, int q3, int q4)
+{
+    return (q1 + q2 + q3 + q4) / 4.0f;
+}
+
+int averageFinal(int midterm, int final, float quizAvg)
+{
+    float avg = (midterm + final + quizAvg) / 3.0f;
+    return static_cast<int>(avg);
+}
+
+char getLetterGrade(int finalAvg)
+{
+    if (finalAvg >= 90) return 'A';
+    else if (finalAvg >= 80) return 'B';
+    else if (finalAvg >= 70) return 'C';
+    else if (finalAvg >= 60) return 'D';
+    else return 'F';
+}
+
+void ifPassedClass(int finalAvg, int attendance)
+{
+    if (finalAvg >= 60 && attendance >= 30)
+        cout << "The student has PASSED the course.";
+    else if (attendance < 30)
+        cout << "The student has FAILED the course due to lack of attendance.";
+    else
+        cout << "The student has FAILED the course.";
+}`,
+                inputs: [
+                    { id: 'quiz1', label: 'Quiz 1 Score:', type: 'number', value: '85' },
+                    { id: 'quiz2', label: 'Quiz 2 Score:', type: 'number', value: '92' },
+                    { id: 'quiz3', label: 'Quiz 3 Score:', type: 'number', value: '78' },
+                    { id: 'quiz4', label: 'Quiz 4 Score:', type: 'number', value: '88' },
+                    { id: 'midterm', label: 'Midterm Score:', type: 'number', value: '82' },
+                    { id: 'final', label: 'Final Exam Score:', type: 'number', value: '90' },
+                    { id: 'attendance', label: 'Attendance Days:', type: 'number', value: '32' }
+                ]
+            }
+        ];
+
+        // Java Project Data
+        const javaProjectsData = [
+            {
+                id: 1,
+                title: "Volunteer Management System",
+                description: "A Java application for managing volunteer information with object-oriented design.",
+                tech: ["Java", "OOP", "Eclipse", "Package Management"],
+                code: `package edu.seminolestate.managevolunteers;
+
+public class Volunteer {
+    private String firstName;
+    private String lastName;
+    private String email;
+    private String phoneNumber;
+    private int hoursVolunteered;
+    
+    public Volunteer(String firstName, String lastName, String email, String phoneNumber) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.hoursVolunteered = 0;
+    }
+    
+    public String getFirstName() {
+        return firstName;
+    }
+    
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+    
+    public String getLastName() {
+        return lastName;
+    }
+    
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+    
+    public String getEmail() {
+        return email;
+    }
+    
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+    
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+    
+    public int getHoursVolunteered() {
+        return hoursVolunteered;
+    }
+    
+    public void addHours(int hours) {
+        if (hours > 0) {
+            this.hoursVolunteered += hours;
+        }
+    }
+    
+    @Override
+    public String toString() {
+        return "Volunteer: " + firstName + " " + lastName + 
+               " | Email: " + email + 
+               " | Phone: " + phoneNumber + 
+               " | Hours: " + hoursVolunteered;
+    }
+    
+    public static void main(String[] args) {
+        // Create a new volunteer
+        Volunteer volunteer = new Volunteer("John", "Doe", "john.doe@email.com", "555-123-4567");
+        
+        // Add some hours
+        volunteer.addHours(10);
+        volunteer.addHours(5);
+        
+        // Display volunteer information
+        System.out.println(volunteer.toString());
+        System.out.println("Volunteer management system initialized successfully.");
+    }
+}`,
+                inputs: [
+                    { id: 'firstName', label: 'First Name:', type: 'text', value: 'John' },
+                    { id: 'lastName', label: 'Last Name:', type: 'text', value: 'Doe' },
+                    { id: 'email', label: 'Email:', type: 'text', value: 'john.doe@email.com' },
+                    { id: 'phone', label: 'Phone:', type: 'text', value: '555-123-4567' },
+                    { id: 'hours1', label: 'First Hours Batch:', type: 'number', value: '10' },
+                    { id: 'hours2', label: 'Second Hours Batch:', type: 'number', value: '5' }
+                ]
+            },
+            {
+                id: 2,
+                title: "Hospital Patient Management System",
+                description: "Comprehensive hospital patient management with InPatient and OutPatient classes using inheritance.",
+                tech: ["Java", "OOP", "Inheritance", "Packages", "Java 21", "Eclipse"],
+                code: `package edu.seminolestate.managepatients;
+
+import edu.seminolestate.patients.*;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class ManagePatients {
+
+    public static void main(String[] args) {
+        ArrayList<Patient> patients = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            System.out.println("\\nEnter your choice:");
+            System.out.println("1. Add InPatient");
+            System.out.println("2. Add OutPatient");
+            System.out.println("3. List All Patients");
+            System.out.println("4. Exit");
+
+            if (!scanner.hasNextInt()) {
+                System.out.println("Invalid input! Please enter a number 1-4.");
+                scanner.nextLine();
+                continue;
+            }
+
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (choice) {
+                case 1:
+                    String inFirst = promptNonEmptyString(scanner, "Enter the first Name: ");
+                    String inLast = promptNonEmptyString(scanner, "Enter the last Name: ");
+                    int inId = promptPositiveInt(scanner, "Enter the patient ID: ");
+
+                    System.out.print("Enter the date admitted (mm/dd/yyyy): ");
+                    String[] admitParts = scanner.nextLine().split("/");
+                    LocalDate dateAdmitted = LocalDate.of(
+                        Integer.parseInt(admitParts[2].trim()),
+                        Integer.parseInt(admitParts[0].trim()),
+                        Integer.parseInt(admitParts[1].trim())
+                    );
+
+                    System.out.print("Has the patient been released? (y/n): ");
+                    String releasedResponse = scanner.nextLine().trim().toLowerCase();
+
+                    LocalDate dateReleased = null;
+                    if (releasedResponse.equals("y")) {
+                        System.out.print("Enter date released (mm/dd/yyyy): ");
+                        String[] releaseParts = scanner.nextLine().split("/");
+                        dateReleased = LocalDate.of(
+                            Integer.parseInt(releaseParts[2].trim()),
+                            Integer.parseInt(releaseParts[0].trim()),
+                            Integer.parseInt(releaseParts[1].trim())
+                        );
+                    }
+
+                    int room = promptPositiveInt(scanner, "Enter the room number: ");
+
+                    patients.add(new InPatient(inFirst, inLast, inId, dateAdmitted, dateReleased, room));
+                    break;
+
+                case 2:
+                    String outFirst = promptNonEmptyString(scanner, "Enter the first Name: ");
+                    String outLast = promptNonEmptyString(scanner, "Enter the Last Name: ");
+                    int outId = promptPositiveInt(scanner, "Enter the patient ID: ");
+                    int clinic = promptPositiveInt(scanner, "Enter the clinic Number: ");
+
+                    System.out.print("enter the procedure Date (mm/dd/yyyy): ");
+                    String[] procedureParts = scanner.nextLine().split("/");
+                    LocalDate procedureDate = LocalDate.of(
+                        Integer.parseInt(procedureParts[2].trim()),
+                        Integer.parseInt(procedureParts[0].trim()),
+                        Integer.parseInt(procedureParts[1].trim())
+                    );
+
+                    int visit = promptPositiveInt(scanner, "Enter the Visit Number: ");
+
+                    patients.add(new OutPatient(outFirst, outLast, outId, visit, clinic, procedureDate));
+                    break;
+
+                case 3:
+                    if (patients.isEmpty()) {
+                        System.out.println("No patients in system.");
+                    } else {
+                        for (Patient p : patients) {
+                            System.out.println(p);  // prints patient info in one line (no extra brackets)
+                            System.out.println("Length of stay is " + p.lengthOfStay() + " day(s).\\n");  // prints length in next line + blank line
+                        }
+                    }
+                    break;
+
+                case 4:
+                    System.out.println("Exiting...");
+                    scanner.close();
+                    System.exit(0);
+
+                default:
+                    System.out.println("Invalid choice! Please select 1-4.");
+            }
+        }
+    }
+
+    private static String promptNonEmptyString(Scanner scanner, String prompt) {
+        String input;
+        do {
+            System.out.print(prompt);
+            input = scanner.nextLine().trim();
+            if (input.isEmpty()) {
+                System.out.println("Input cannot be empty. Please try again.");
+            }
+        } while (input.isEmpty());
+        return input;
+    }
+
+    private static int promptPositiveInt(Scanner scanner, String prompt) {
+        int number = -1;
+        while (number <= 0) {
+            System.out.print(prompt);
+            if (scanner.hasNextInt()) {
+                number = scanner.nextInt();
+                if (number <= 0) {
+                    System.out.println("Number must be greater than zero. Try again.");
+                }
+            } else {
+                System.out.println("Invalid input! Please enter a valid number.");
+                scanner.next();
+            }
+        }
+        scanner.nextLine();
+        return number;
+    }
+}`,
+                inputs: [
+                    { id: 'patientType', label: 'Patient Type:', type: 'select', options: ['InPatient', 'OutPatient'], value: 'InPatient' },
+                    { id: 'firstName', label: 'First Name:', type: 'text', value: 'John' },
+                    { id: 'lastName', label: 'Last Name:', type: 'text', value: 'Smith' },
+                    { id: 'patientId', label: 'Patient ID:', type: 'number', value: '1001' },
+                    { id: 'admitDate', label: 'Admit Date (mm/dd/yyyy):', type: 'text', value: '12/01/2024' },
+                    { id: 'releaseDate', label: 'Release Date (mm/dd/yyyy):', type: 'text', value: '12/05/2024' },
+                    { id: 'roomNumber', label: 'Room Number:', type: 'number', value: '201' },
+                    { id: 'clinicNumber', label: 'Clinic Number:', type: 'number', value: '5' },
+                    { id: 'procedureDate', label: 'Procedure Date (mm/dd/yyyy):', type: 'text', value: '12/10/2024' },
+                    { id: 'visitNumber', label: 'Visit Number:', type: 'number', value: '3' }
+                ]
+            },
+            {
+                id: 3,
+                title: "Purchase Management System",
+                description: "Complete purchase tracking system with file I/O, custom exceptions, and data validation.",
+                tech: ["Java", "File I/O", "Custom Exceptions", "LocalDate", "Data Validation"],
+                code: `package edu.seminolestate.managepurchases;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+
+public class ManagePurchases {
+
+    private static final String FILE_NAME = "purchases.txt";
+    private static ArrayList<Purchase> purchases = new ArrayList<>();
+    private static Scanner keyboard = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        readFromFile();
+
+        boolean running = true;
+        while (running) {
+            System.out.println("\\nEnter your choice:");
+            System.out.println("1. Add a Purchase");
+            System.out.println("2. Display All Purchases");
+            System.out.println("3. Exit");
+            String choiceInput = keyboard.nextLine();
+            
+            int choice;
+            try {
+                choice = Integer.parseInt(choiceInput); 
+            } catch (NumberFormatException e) {
+                System.out.println("You must enter an integer number! Invalid menu option entered.Try again.");
+                continue;
+            }
+            
+            switch (choice) {
+                case 1:
+                    addPurchase();
+                    break;
+                case 2:
+                    displayPurchases();
+                    break;
+                case 3:
+                    exitApplication();
+                    running = false;
+                    break;
+                default:
+                    System.out.println("Invalid menu option entered. Try again.");
+            }
+        }
+        keyboard.close();
+    }
+
+    private static void readFromFile() {
+        File file = new File(FILE_NAME);
+        if (!file.exists()) {
+            System.out.println("No existing purchase file found. Starting with an empty list.");
+            return;
+        }
+
+        try (Scanner fileScanner = new Scanner(file)) {
+            while (fileScanner.hasNextLine()) {
+                String product = fileScanner.nextLine();
+                String store = fileScanner.nextLine();
+                String dateStr = fileScanner.nextLine();
+                String costStr = fileScanner.nextLine();
+
+                try {
+                    LocalDate date = LocalDate.parse(dateStr);
+                    double cost = Double.parseDouble(costStr);
+
+                    Purchase purchase = new Purchase(product, store, date, cost);
+                    purchases.add(purchase);
+
+                } catch (IllegalPurchaseArgumentException | NumberFormatException e) {
+                    System.out.println("Skipping invalid purchase data in file: " + e.getMessage());
+                }
+            }
+            System.out.println("Purchases loaded successfully.");
+        } catch (FileNotFoundException e) {
+            System.out.println("Error reading file: " + e.getMessage());
+        }
+    }
+
+    private static void addPurchase() {
+        try {
+            System.out.print("Enter product name: ");
+            String product = keyboard.nextLine();
+
+            System.out.print("Enter store name: ");
+            String store = keyboard.nextLine();
+
+            System.out.print("Enter purchase date (like 6/23/2016): ");
+            String dateInput = keyboard.nextLine();
+
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("M/d/yyyy");
+            
+            LocalDate date;
+            try {
+                date = LocalDate.parse(dateInput, formatter);
+            } catch (DateTimeParseException e) {
+                System.out.println("You entered an invalid date.");
+                return; 
+            }
+
+            System.out.print("Enter cost: ");
+            String costInput = keyboard.nextLine();
+
+            double cost;
+            try {
+                cost = Double.parseDouble(costInput);
+            } catch (NumberFormatException e) {
+                System.out.println("Enter only decimal numbers for the cost.");
+                return;
+            }
+
+            Purchase newPurchase = new Purchase(product, store, date, cost);
+            purchases.add(newPurchase);
+
+        } catch (IllegalPurchaseArgumentException e) {
+            System.out.println("Couldn't create the purchase object but application will continue. " + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Error: Invalid input format.");
+        }
+    }
+
+    private static void displayPurchases() {
+        if (purchases.isEmpty()) {
+            System.out.println("No purchases recorded.");
+            return;
+        }
+
+        System.out.println("\\nAll Purchases:");
+        for (Purchase p : purchases) {
+            System.out.println(p.toString());
+        }
+    }
+
+    private static void exitApplication() {
+        if (!purchases.isEmpty()) {
+            try (PrintWriter writer = new PrintWriter(FILE_NAME)) {
+                for (Purchase p : purchases) {
+                    writer.println(p.getProductName());
+                    writer.println(p.getStoreName());
+                    writer.println(p.getPurchaseDate().toString());
+                    writer.println(p.getCost());
+                }
+                System.out.println("Purchases saved to file.");
+            } catch (IOException e) {
+                System.out.println("Error writing to file: " + e.getMessage());
+            }
+        }
+        System.out.println("Thank you for using ManagePurchases! Goodbye.");
+    }
+}`,
+                inputs: [
+                    { id: 'productName', label: 'Product Name:', type: 'text', value: 'Laptop' },
+                    { id: 'storeName', label: 'Store Name:', type: 'text', value: 'Best Buy' },
+                    { id: 'purchaseDate', label: 'Purchase Date (mm/dd/yyyy):', type: 'text', value: '12/15/2024' },
+                    { id: 'cost', label: 'Cost ($):', type: 'number', value: '899.99' }
+                ]
+            },
+            {
+                id: 4,
+                title: "Sellable Management System",
+                description: "Advanced inventory system managing stocks, automobiles, and trucks using interfaces and inheritance.",
+                tech: ["Java", "Interfaces", "Inheritance", "Polymorphism", "Multiple Packages"],
+                code: `package edu.seminolestate.managesellables;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
+import edu.seminolestate.sellable.Sellable;
+import edu.seminolestate.stock.Stock;
+import edu.seminolestate.stock.IllegalStockArgumentException;
+import edu.seminolestate.vehicles.*;
+
+public class ManageSellables {
+
+    private static ArrayList<Sellable> sellables = new ArrayList<>();
+    private static Scanner scanner = new Scanner(System.in);
+
+    public static void main(String[] args) {
+
+        int choice = 0;
+
+        while (choice != 5) {
+            System.out.println("1. Add a stock");
+            System.out.println("2. Add a truck");
+            System.out.println("3. Add an automobile");
+            System.out.println("4. Display all sales");
+            System.out.println("5. Exit");
+
+            try {
+                choice = Integer.parseInt(scanner.nextLine());
+
+                if (choice < 1 || choice > 5) {
+                    System.out.println("Invalid menu option entered. Try again.");
+                    continue;
+                }
+
+                switch (choice) {
+                    case 1:
+                        addStock();
+                        break;
+                    case 2:
+                         addTruck();
+                            break;
+                    case 3:
+                         addAutomobile();
+                         break;
+                    case 4:
+                        displayAllSales();
+                        break;
+                    case 5:
+                        System.out.println("Thank you for using the ManageSellables application. Bye!");
+                        break;
+                }
+
+            } catch (NumberFormatException e) {
+                System.out.println("You must enter an integer number! Invalid menu option entered. Try again.");
+            }
+        }
+
+        scanner.close();
+    }
+
+    private static void addStock() {
+
+        String stockName;
+        while (true) {
+            System.out.print("Enter stock name: ");
+            stockName = scanner.nextLine().trim();
+            if (!stockName.isEmpty()) break;
+            System.out.println("You must enter a value.");
+        }
+
+        double numberOfShares = 0;
+        while (true) {
+            System.out.print("Enter the number of shares: ");
+            String input = scanner.nextLine().trim();
+
+            if (input.isEmpty()) {
+                System.out.println("Enter only decimal numbers.");
+                continue;
+            }
+
+            try {
+                numberOfShares = Double.parseDouble(input);
+                if (numberOfShares <= 0) {
+                    System.out.println("Value must be > 0.");
+                    continue;
+                }
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Enter only decimal numbers.");
+            }
+        }
+
+        double pricePerShare = 0;
+        while (true) {
+            System.out.print("Enter the per share: ");
+            String input = scanner.nextLine().trim();
+
+            if (input.isEmpty()) {
+                System.out.println("Enter only decimal numbers.");
+                continue;
+            }
+
+            try {
+                pricePerShare = Double.parseDouble(input);
+                if (pricePerShare <= 0) {
+                    System.out.println("Value must be > 0.");
+                    continue;
+                }
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Enter only decimal numbers.");
+            }
+        }
+
+        LocalDate dateSold = null;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("M/d/yyyy");
+        while (true) {
+            System.out.print("Enter date sold (like 6/23/2016): ");
+            String input = scanner.nextLine().trim();
+            try {
+                dateSold = LocalDate.parse(input, formatter);
+                break;
+            } catch (Exception e) {
+                System.out.println("You must enter a valid date in the m/d/yyyy format.");
+            }
+        }
+
+        try {
+            Stock stock = new Stock(stockName, numberOfShares, pricePerShare, dateSold);
+            sellables.add(stock);
+            System.out.println("Stock added successfully!");
+        } catch (IllegalStockArgumentException e) {
+            System.out.println("Error creating stock: " + e.getMessage());
+        }
+    }
+
+    private static void addTruck() {
+        double purchasePrice = 0;
+        String model = "";
+        int modelYear = 0;
+        double cargoCapacity = 0;
+        double horsepower = 0;
+
+        while (true) {
+            System.out.print("Enter the purchase price: ");
+            String input = scanner.nextLine().trim();
+            if (input.isEmpty()) {
+                System.out.println("Enter only decimal numbers.");
+                continue;
+            }
+            try {
+                purchasePrice = Double.parseDouble(input);
+                if (purchasePrice <= 0) {
+                    System.out.println("Value must be > 0.");
+                    continue;
+                }
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Enter only decimal numbers.");
+            }
+        }
+
+        while (true) {
+            System.out.print("Enter the model: ");
+            model = scanner.nextLine().trim();
+            if (model.isEmpty()) {
+                System.out.println("You must enter a value.");
+                continue;
+            }
+            break;
+        }
+
+        while (true) {
+            System.out.print("Enter the year of the truck: ");
+            String input = scanner.nextLine().trim();
+            if (input.isEmpty()) {
+                System.out.println("Enter only integer numbers");
+                continue;
+            }
+            try {
+                modelYear = Integer.parseInt(input);
+                if (modelYear <= 0) {
+                    System.out.println("Value must be > 0.");
+                    continue;
+                }
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Enter only integer numbers");
+            }
+        }
+
+        while (true) {
+            System.out.print("Enter the cargo capacity: ");
+            String input = scanner.nextLine().trim();
+            if (input.isEmpty()) {
+                System.out.println("Enter only decimal numbers.");
+                continue;
+            }
+            try {
+                cargoCapacity = Double.parseDouble(input);
+                if (cargoCapacity <= 0) {
+                    System.out.println("Value must be > 0.");
+                    continue;
+                }
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Enter only decimal numbers.");
+            }
+        }
+
+        while (true) {
+            System.out.print("Enter the horsepower: ");
+            String input = scanner.nextLine().trim();
+            if (input.isEmpty()) {
+                System.out.println("Enter only decimal numbers.");
+                continue;
+            }
+            try {
+                horsepower = Double.parseDouble(input);
+                if (horsepower <= 0) {
+                    System.out.println("Value must be > 0.");
+                    continue;
+                }
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Enter only decimal numbers.");
+            }
+        }
+
+        try {
+            Truck truck = new Truck(purchasePrice, model, modelYear, cargoCapacity, horsepower);
+            sellables.add(truck);
+            System.out.println("Truck added successfully!");
+        } catch (IllegalVehicleArgumentException e) {
+            System.out.println("Error adding truck: " + e.getMessage());
+        }
+    }
+
+    private static void addAutomobile() {
+        double purchasePrice = 0;
+        String model = "";
+        int modelYear = 0;
+        int numberOfSeats = 0;
+
+        while (true) {
+            System.out.print("Enter the purchase price: ");
+            String input = scanner.nextLine().trim();
+            if (input.isEmpty()) {
+                System.out.println("Enter only decimal numbers.");
+                continue;
+            }
+            try {
+                purchasePrice = Double.parseDouble(input);
+                if (purchasePrice <= 0) {
+                    System.out.println("Value must be > 0.");
+                    continue;
+                }
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Enter only decimal numbers.");
+            }
+        }
+
+        while (true) {
+            System.out.print("Enter the model: ");
+            model = scanner.nextLine().trim();
+            if (model.isEmpty()) {
+                System.out.println("You must enter a value.");
+                continue;
+            }
+            break;
+        }
+
+        while (true) {
+            System.out.print("Enter the year of the automobile: ");
+            String input = scanner.nextLine().trim();
+            if (input.isEmpty()) {
+                System.out.println("Enter only integer numbers");
+                continue;
+            }
+            try {
+                modelYear = Integer.parseInt(input);
+                if (modelYear <= 0) {
+                    System.out.println("Value must be > 0.");
+                    continue;
+                }
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Enter only integer numbers");
+            }
+        }
+
+        while (true) {
+            System.out.print("Enter the number of seats: ");
+            String input = scanner.nextLine().trim();
+            if (input.isEmpty()) {
+                System.out.println("Enter only integer numbers.");
+                continue;
+            }
+            try {
+                numberOfSeats = Integer.parseInt(input);
+                if (numberOfSeats <= 0) {
+                    System.out.println("Value must be > 0.");
+                    continue;
+                }
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Enter only integer numbers.");
+            }
+        }
+
+        try {
+            Automobile automobile = new Automobile(purchasePrice, model, modelYear, numberOfSeats);
+            sellables.add(automobile);
+            System.out.println("Automobile added successfully!");
+        } catch (IllegalVehicleArgumentException e) {
+            System.out.println("Error adding automobile: " + e.getMessage());
+        }
+    }
+
+    private static void displayAllSales() {
+        if (sellables.isEmpty()) {
+            System.out.println("There are no sales.");
+            return;
+        }
+
+        for (Sellable item : sellables) {
+            String salePrice = String.format("$%,.2f", item.getSaleAmount());
+            System.out.println(item.toString());
+            System.out.println("Sale Price: " + salePrice);
+        }
+    }
+}`,
+                inputs: [
+                    { id: 'itemType', label: 'Item Type:', type: 'select', options: ['Stock', 'Truck', 'Automobile'], value: 'Stock' },
+                    { id: 'stockName', label: 'Stock Name:', type: 'text', value: 'AAPL' },
+                    { id: 'shares', label: 'Number of Shares:', type: 'number', value: '100' },
+                    { id: 'pricePerShare', label: 'Price Per Share:', type: 'number', value: '150.25' },
+                    { id: 'dateSold', label: 'Date Sold (mm/dd/yyyy):', type: 'text', value: '12/20/2024' },
+                    { id: 'purchasePrice', label: 'Purchase Price:', type: 'number', value: '25000' },
+                    { id: 'model', label: 'Model:', type: 'text', value: 'F-150' },
+                    { id: 'modelYear', label: 'Model Year:', type: 'number', value: '2023' },
+                    { id: 'cargoCapacity', label: 'Cargo Capacity:', type: 'number', value: '1500' },
+                    { id: 'horsepower', label: 'Horsepower:', type: 'number', value: '400' },
+                    { id: 'numberOfSeats', label: 'Number of Seats:', type: 'number', value: '5' }
+                ]
+            },
+            {
+                id: 5,
+                title: "Property Management System",
+                description: "Complete real estate property management system for houses and apartments with file persistence and sorting capabilities.",
+                tech: ["Java", "OOP", "File I/O", "Serialization", "Comparator", "Inheritance"],
+                code: `package edu.seminolestate.manageproperties;
+
+import java.util.ArrayList;
+import edu.seminolestate.properties.Property;
+import java.util.Scanner;
+import edu.seminolestate.properties.PropertyAddressComparator;
+import java.io.ObjectOutputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.FileInputStream;
+import java.io.File;
+import java.io.EOFException;
+
+public class ManageProperties {
+    private static final String PROPERTIES_FILE = "properties.dat";
+    private static ArrayList<Property> properties = new ArrayList<Property>();
+    private static Scanner scanner = new Scanner(System.in);
+
+    private static int promptInt(String message) {
+        while (true) {
+            System.out.print(message);
+            String input = scanner.nextLine().trim();
+            if (input.isEmpty()) {
+                System.out.println("Value must be integer number and > 0. Please reenter.");
+                continue;
+            }
+            try {
+                int value = Integer.parseInt(input);
+                if (value > 0) return value;
+                else System.out.println("Value must be > 0. Please reenter.");
+            } catch (NumberFormatException e) {
+                System.out.println("Value must be integer number and > 0. Please reenter.");
+            }
+        }
+    }
+
+    private static double promptDouble(String message) {
+        while (true) {
+            System.out.print(message);
+            String input = scanner.nextLine().trim();
+            if (input.isEmpty()) {
+                System.out.println("Enter only decimal numbers");
+                continue;
+            }
+            try {
+                double value = Double.parseDouble(input);
+                if (value > 0) return value;
+                else System.out.println("Value must be > 0.");
+            } catch (NumberFormatException e) {
+                System.out.println("Enter only decimal numbers");
+            }
+        }
+    }
+
+    private static String promptString(String message) {
+        while (true) {
+            System.out.print(message);
+            String input = scanner.nextLine().trim();
+            if (input.isEmpty()) {
+                System.out.println("Address cannot be empty. Please reenter.");
+            } else {
+                return input;
+            }
+        }
+    }
+
+    private static void addHouse() {
+        try {
+            int propertyID = promptInt("Enter the property ID: ");
+            String address = promptString("Enter the property address: ");
+            double bathrooms = promptDouble("Enter the property number of bathrooms: ");
+            int bedrooms = promptInt("Enter the property number of bedrooms: ");
+            double lotSize = promptDouble("Enter the lot size: ");
+            double value = promptDouble("Enter the value of the property in dollars & cents (like 200000.50): ");
+
+            edu.seminolestate.properties.House house =
+                new edu.seminolestate.properties.House(propertyID, address, bathrooms, bedrooms, lotSize, value);
+
+            properties.add(house);
+        } catch (edu.seminolestate.properties.IllegalPropertyArgumentException e) {
+            System.out.println("Error creating house: " + e.getMessage());
+        }
+    }
+
+    private static void addApartment() {
+        try {
+            int propertyID = promptInt("Enter the property ID: ");
+            String address = promptString("Enter the property address: ");
+            double bathrooms = promptDouble("Enter the property number of bathrooms: ");
+            int bedrooms = promptInt("Enter the property number of bedrooms: ");
+            double rent = promptDouble("Enter the monthly rent: ");
+
+            edu.seminolestate.properties.Apartment apartment = 
+                new edu.seminolestate.properties.Apartment(propertyID, address, bathrooms, bedrooms, rent);
+
+            properties.add(apartment);
+        } catch (edu.seminolestate.properties.IllegalPropertyArgumentException e) {
+            System.out.println("Error creating apartment: % e.getMessage());
+        }
+    }
+
+    private static void listPropertiesByID() {
+        if (properties.isEmpty()) {
+            System.out.println("\\nNo properties found.");
+            return;
+        }
+        
+        properties.sort(null); // Sorts using Property's compareTo() method
+        for (Property p : properties) {
+            System.out.println(p);
+        }
+    }
+
+    private static void listPropertiesByAddress() {
+        if (properties.isEmpty()) {
+            System.out.println("\\nNo properties found.");
+            return;
+        }
+        
+        properties.sort(new PropertyAddressComparator());
+        for (Property p : properties) {
+            System.out.println(p);
+        }
+    }
+
+    private static void exitApp() {
+        if (!properties.isEmpty()) {
+            try (ObjectOutputStream oos =
+                 new ObjectOutputStream(new FileOutputStream(PROPERTIES_FILE))) {
+                for (Property p : properties) {
+                    oos.writeObject(p);
+                }
+                System.out.println("Data saved to " + PROPERTIES_FILE);
+            } catch (IOException e) {
+                System.out.println("Error saving properties: " + e.getMessage());
+            }
+        }
+        System.out.println("Thank you for using the Property Manager");
+        scanner.close();
+        System.exit(0);
+    }
+
+    public static void main(String[] args) {
+        
+        File file = new File(PROPERTIES_FILE);
+        if (file.exists()) {
+            try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file))) {
+                while (true) {
+                    try {
+                        Property p = (Property) ois.readObject();
+                        properties.add(p);
+                    } catch (EOFException e) {
+                        break;
+                    }
+                }
+                System.out.println("Loaded " + properties.size() + " properties from file.");
+            } catch (IOException | ClassNotFoundException e) {
+                System.out.println("Error loading properties: " + e.getMessage());
+            }
+        }
+        
+        int choice = 0;
+        while (choice != 5) {
+            System.out.println("1. Add House");
+            System.out.println("2. Add Apartment");
+            System.out.println("3. List all properties by ID");
+            System.out.println("4. List all properties by Address");
+            System.out.println("5. Exit");
+
+            String input = scanner.nextLine().trim();
+
+            if (input.isEmpty()) {
+                System.out.println("Enter numeric values for menu choice");
+                System.out.println("Invalid value. Enter a value 1 - 5");
+                continue;
+            }
+
+            try {
+                choice = Integer.parseInt(input);
+                if (choice < 1 || choice > 5) {
+                    System.out.println("Invalid value. Enter a value 1 - 5");
+                    continue;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Enter numeric values for menu choice");
+                System.out.println("Invalid value. Enter a value 1 - 5");
+                continue;
+            }
+
+            switch (choice) {
+                case 1:
+                    addHouse();
+                    break;
+                case 2:
+                    addApartment();
+                    break;
+                case 3:
+                    listPropertiesByID();
+                    break;
+                case 4:
+                    listPropertiesByAddress();
+                    break;
+                case 5:
+                    exitApp();
+                    break;
+            }
+        }
+    }
+}`,
+                inputs: [
+                    { id: 'propertyType', label: 'Property Type:', type: 'select', options: ['House', 'Apartment'], value: 'House' },
+                    { id: 'propertyID', label: 'Property ID:', type: 'number', value: '1001' },
+                    { id: 'address', label: 'Address:', type: 'text', value: '123 Main St' },
+                    { id: 'bathrooms', label: 'Number of Bathrooms:', type: 'number', value: '2.5' },
+                    { id: 'bedrooms', label: 'Number of Bedrooms:', type: 'number', value: '3' },
+                    { id: 'lotSize', label: 'Lot Size (sq ft):', type: 'number', value: '5000' },
+                    { id: 'value', label: 'Property Value ($):', type: 'number', value: '250000' },
+                    { id: 'rent', label: 'Monthly Rent ($):', type: 'number', value: '1500' }
+                ]
+            }
+        ];
+
+        // SQL Project Data
+        const sqlProjectsData = [
+            {
+                id: 1,
+                title: "Library Management Database",
+                description: "Complete library system with books, members, loans, and fine tracking.",
+                tech: ["SQL", "MySQL", "Database Design", "Normalization"],
+                code: `-- Library Management Database Schema
+-- Create database
+CREATE DATABASE library_management;
+USE library_management;
+
+-- Create tables
+CREATE TABLE books (
+    book_id INT PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
+    author VARCHAR(255) NOT NULL,
+    isbn VARCHAR(20) UNIQUE,
+    publication_year INT,
+    category VARCHAR(100),
+    total_copies INT DEFAULT 1,
+    available_copies INT DEFAULT 1,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE members (
+    member_id INT PRIMARY KEY AUTO_INCREMENT,
+    first_name VARCHAR(100) NOT NULL,
+    last_name VARCHAR(100) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    phone VARCHAR(20),
+    membership_date DATE NOT NULL,
+    status ENUM('Active', 'Inactive', 'Suspended') DEFAULT 'Active',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE loans (
+    loan_id INT PRIMARY KEY AUTO_INCREMENT,
+    book_id INT NOT NULL,
+    member_id INT NOT NULL,
+    loan_date DATE NOT NULL,
+    due_date DATE NOT NULL,
+    return_date DATE,
+    status ENUM('Active', 'Returned', 'Overdue') DEFAULT 'Active',
+    FOREIGN KEY (book_id) REFERENCES books(book_id),
+    FOREIGN KEY (member_id) REFERENCES members(member_id)
+);
+
+CREATE TABLE fines (
+    fine_id INT PRIMARY KEY AUTO_INCREMENT,
+    loan_id INT NOT NULL,
+    member_id INT NOT NULL,
+    amount DECIMAL(8,2) NOT NULL,
+    fine_date DATE NOT NULL,
+    paid_date DATE,
+    status ENUM('Pending', 'Paid') DEFAULT 'Pending',
+    FOREIGN KEY (loan_id) REFERENCES loans(loan_id),
+    FOREIGN KEY (member_id) REFERENCES members(member_id)
+);
+
+-- Sample data insertion
+INSERT INTO books (title, author, isbn, publication_year, category, total_copies, available_copies) VALUES
+('The Great Gatsby', 'F. Scott Fitzgerald', '978-0-7432-7356-5', 1925, 'Fiction', 3, 3),
+('To Kill a Mockingbird', 'Harper Lee', '978-0-06-112008-4', 1960, 'Fiction', 2, 2),
+('1984', 'George Orwell', '978-0-452-28423-4', 1949, 'Science Fiction', 4, 4),
+('Pride and Prejudice', 'Jane Austen', '978-0-14-143951-8', 1813, 'Romance', 2, 2);
+
+INSERT INTO members (first_name, last_name, email, phone, membership_date) VALUES
+('John', 'Smith', 'john.smith@email.com', '555-0101', '2023-01-15'),
+('Sarah', 'Johnson', 'sarah.j@email.com', '555-0102', '2023-02-20'),
+('Michael', 'Brown', 'm.brown@email.com', '555-0103', '2023-03-10');
+
+-- Useful queries
+-- Find all available books
+SELECT book_id, title, author, available_copies 
+FROM books 
+WHERE available_copies > 0;
+
+-- Find overdue loans
+SELECT m.first_name, m.last_name, b.title, l.due_date
+FROM loans l
+JOIN members m ON l.member_id = m.member_id
+JOIN books b ON l.book_id = b.book_id
+WHERE l.status = 'Active' AND l.due_date < CURDATE();
+
+-- Calculate total fines by member
+SELECT m.first_name, m.last_name, SUM(f.amount) as total_fines
+FROM fines f
+JOIN members m ON f.member_id = m.member_id
+WHERE f.status = 'Pending'
+GROUP BY m.member_id;
+
+-- Most popular books (by number of loans)
+SELECT b.title, b.author, COUNT(l.loan_id) as times_borrowed
+FROM books b
+LEFT JOIN loans l ON b.book_id = l.book_id
+GROUP BY b.book_id
+ORDER BY times_borrowed DESC;`,
+                inputs: [
+                    { id: 'queryType', label: 'Query Type:', type: 'select', options: ['Available Books', 'Overdue Loans', 'Member Fines', 'Popular Books'], value: 'Available Books' }
+                ]
+            },
+            {
+                id: 2,
+                title: "E-commerce Database System",
+                description: "Complete online store database with products, customers, orders, and inventory.",
+                tech: ["SQL", "PostgreSQL", "Relationships", "Transactions"],
+                code: `-- E-commerce Database Schema
+-- Create database
+CREATE DATABASE ecommerce_store;
+USE ecommerce_store;
+
+-- Create tables
+CREATE TABLE customers (
+    customer_id INT PRIMARY KEY AUTO_INCREMENT,
+    first_name VARCHAR(100) NOT NULL,
+    last_name VARCHAR(100) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
+    phone VARCHAR(20),
+    address TEXT,
+    city VARCHAR(100),
+    state VARCHAR(50),
+    zip_code VARCHAR(20),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE categories (
+    category_id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    description TEXT,
+    parent_category_id INT,
+    FOREIGN KEY (parent_category_id) REFERENCES categories(category_id)
+);
+
+CREATE TABLE products (
+    product_id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    description TEXT,
+    price DECIMAL(10,2) NOT NULL,
+    category_id INT,
+    sku VARCHAR(100) UNIQUE,
+    stock_quantity INT DEFAULT 0,
+    image_url VARCHAR(500),
+    is_active BOOLEAN DEFAULT TRUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (category_id) REFERENCES categories(category_id)
+);
+
+CREATE TABLE orders (
+    order_id INT PRIMARY KEY AUTO_INCREMENT,
+    customer_id INT NOT NULL,
+    order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    total_amount DECIMAL(10,2) NOT NULL,
+    status ENUM('Pending', 'Processing', 'Shipped', 'Delivered', 'Cancelled') DEFAULT 'Pending',
+    shipping_address TEXT,
+    billing_address TEXT,
+    FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+);
+
+CREATE TABLE order_items (
+    order_item_id INT PRIMARY KEY AUTO_INCREMENT,
+    order_id INT NOT NULL,
+    product_id INT NOT NULL,
+    quantity INT NOT NULL,
+    unit_price DECIMAL(10,2) NOT NULL,
+    FOREIGN KEY (order_id) REFERENCES orders(order_id),
+    FOREIGN KEY (product_id) REFERENCES products(product_id)
+);
+
+CREATE TABLE payments (
+    payment_id INT PRIMARY KEY AUTO_INCREMENT,
+    order_id INT NOT NULL,
+    payment_method ENUM('Credit Card', 'PayPal', 'Bank Transfer') NOT NULL,
+    amount DECIMAL(10,2) NOT NULL,
+    payment_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    status ENUM('Pending', 'Completed', 'Failed') DEFAULT 'Pending',
+    transaction_id VARCHAR(255),
+    FOREIGN KEY (order_id) REFERENCES orders(order_id)
+);
+
+-- Sample data
+INSERT INTO categories (name, description) VALUES
+('Electronics', 'Electronic devices and accessories'),
+('Clothing', 'Fashion and apparel'),
+('Books', 'Books and educational materials');
+
+INSERT INTO products (name, description, price, category_id, sku, stock_quantity) VALUES
+('Smartphone X', 'Latest smartphone with advanced features', 699.99, 1, 'SPX-001', 50),
+('Wireless Headphones', 'Noise-cancelling wireless headphones', 199.99, 1, 'WH-002', 30),
+('Cotton T-Shirt', 'Comfortable cotton t-shirt', 19.99, 2, 'TS-003', 100);
+
+INSERT INTO customers (first_name, last_name, email, password_hash) VALUES
+('Alice', 'Johnson', 'alice@email.com', 'hashed_password_1'),
+('Bob', 'Wilson', 'bob@email.com', 'hashed_password_2');
+
+-- Useful queries
+-- Get customer order history
+SELECT c.first_name, c.last_name, o.order_id, o.order_date, o.total_amount, o.status
+FROM customers c
+JOIN orders o ON c.customer_id = o.customer_id
+ORDER BY o.order_date DESC;
+
+-- Calculate total sales by product
+SELECT p.name, SUM(oi.quantity) as total_sold, SUM(oi.quantity * oi.unit_price) as total_revenue
+FROM products p
+JOIN order_items oi ON p.product_id = oi.product_id
+GROUP BY p.product_id
+ORDER BY total_revenue DESC;
+
+-- Find low stock products
+SELECT name, stock_quantity
+FROM products
+WHERE stock_quantity < 10 AND is_active = TRUE;
+
+-- Monthly sales report
+SELECT 
+    YEAR(order_date) as year,
+    MONTH(order_date) as month,
+    COUNT(order_id) as total_orders,
+    SUM(total_amount) as total_revenue
+FROM orders
+WHERE status = 'Delivered'
+GROUP BY YEAR(order_date), MONTH(order_date)
+ORDER BY year DESC, month DESC;`,
+                inputs: [
+                    { id: 'reportType', label: 'Report Type:', type: 'select', options: ['Customer Orders', 'Product Sales', 'Low Stock', 'Monthly Sales'], value: 'Customer Orders' }
+                ]
+            },
+            {
+                id: 3,
+                title: "Employee Management System",
+                description: "HR database for tracking employees, departments, salaries, and performance.",
+                tech: ["SQL", "Database Design", "Joins", "Aggregate Functions"],
+                code: `-- Employee Management Database Schema
+-- Create database
+CREATE DATABASE employee_management;
+USE employee_management;
+
+-- Create tables
+CREATE TABLE departments (
+    department_id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    description TEXT,
+    manager_id INT,
+    budget DECIMAL(12,2),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY AUTO_INCREMENT,
+    first_name VARCHAR(100) NOT NULL,
+    last_name VARCHAR(100) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    phone VARCHAR(20),
+    hire_date DATE NOT NULL,
+    job_title VARCHAR(100) NOT NULL,
+    department_id INT,
+    manager_id INT,
+    salary DECIMAL(10,2) NOT NULL,
+    status ENUM('Active', 'On Leave', 'Terminated') DEFAULT 'Active',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (department_id) REFERENCES departments(department_id),
+    FOREIGN KEY (manager_id) REFERENCES employees(employee_id)
+);
+
+CREATE TABLE projects (
+    project_id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    description TEXT,
+    start_date DATE,
+    end_date DATE,
+    budget DECIMAL(12,2),
+    status ENUM('Planning', 'In Progress', 'Completed', 'On Hold') DEFAULT 'Planning',
+    department_id INT,
+    FOREIGN KEY (department_id) REFERENCES departments(department_id)
+);
+
+CREATE TABLE employee_projects (
+    employee_project_id INT PRIMARY KEY AUTO_INCREMENT,
+    employee_id INT NOT NULL,
+    project_id INT NOT NULL,
+    role VARCHAR(100),
+    hours_worked DECIMAL(5,2) DEFAULT 0,
+    assignment_date DATE,
+    FOREIGN KEY (employee_id) REFERENCES employees(employee_id),
+    FOREIGN KEY (project_id) REFERENCES projects(project_id)
+);
+
+CREATE TABLE performance_reviews (
+    review_id INT PRIMARY KEY AUTO_INCREMENT,
+    employee_id INT NOT NULL,
+    review_date DATE NOT NULL,
+    reviewer_id INT NOT NULL,
+    rating INT CHECK (rating BETWEEN 1 AND 5),
+    comments TEXT,
+    goals TEXT,
+    FOREIGN KEY (employee_id) REFERENCES employees(employee_id),
+    FOREIGN KEY (reviewer_id) REFERENCES employees(employee_id)
+);
+
+-- Sample data
+INSERT INTO departments (name, description, budget) VALUES
+('Engineering', 'Software development and engineering', 500000.00),
+('Sales', 'Sales and customer acquisition', 300000.00),
+('HR', 'Human resources and employee relations', 200000.00);
+
+INSERT INTO employees (first_name, last_name, email, hire_date, job_title, department_id, salary) VALUES
+('John', 'Davis', 'john.davis@company.com', '2020-03-15', 'Software Engineer', 1, 85000.00),
+('Sarah', 'Miller', 'sarah.miller@company.com', '2019-06-01', 'Senior Software Engineer', 1, 110000.00),
+('Mike', 'Johnson', 'mike.johnson@company.com', '2021-01-10', 'Sales Manager', 2, 95000.00);
+
+INSERT INTO projects (name, description, start_date, end_date, budget, department_id) VALUES
+('Website Redesign', 'Complete redesign of company website', '2023-01-01', '2023-06-30', 150000.00, 1),
+('CRM Implementation', 'Implement new customer relationship management system', '2023-02-15', '2023-08-31', 200000.00, 2);
+
+-- Update department managers
+UPDATE departments SET manager_id = 2 WHERE department_id = 1;
+UPDATE departments SET manager_id = 3 WHERE department_id = 2;
+
+-- Useful queries
+-- Department employee count and average salary
+SELECT d.name as department, 
+       COUNT(e.employee_id) as employee_count,
+       AVG(e.salary) as avg_salary
+FROM departments d
+LEFT JOIN employees e ON d.department_id = e.department_id
+WHERE e.status = 'Active'
+GROUP BY d.department_id;
+
+-- Employee hierarchy
+SELECT e1.first_name, e1.last_name, e1.job_title,
+       e2.first_name as manager_first_name,
+       e2.last_name as manager_last_name
+FROM employees e1
+LEFT JOIN employees e2 ON e1.manager_id = e2.employee_id
+WHERE e1.status = 'Active';
+
+-- Project assignments with hours
+SELECT p.name as project_name,
+       e.first_name, e.last_name,
+       ep.role, ep.hours_worked
+FROM projects p
+JOIN employee_projects ep ON p.project_id = ep.project_id
+JOIN employees e ON ep.employee_id = e.employee_id
+WHERE p.status = 'In Progress';
+
+-- Top performing employees
+SELECT e.first_name, e.last_name, e.job_title,
+       AVG(pr.rating) as avg_rating
+FROM employees e
+JOIN performance_reviews pr ON e.employee_id = pr.employee_id
+GROUP BY e.employee_id
+HAVING AVG(pr.rating) >= 4.0
+ORDER BY avg_rating DESC;`,
+                inputs: [
+                    { id: 'queryType', label: 'Query Type:', type: 'select', options: ['Department Stats', 'Employee Hierarchy', 'Project Assignments', 'Top Performers'], value: 'Department Stats' }
+                ]
+            },
+            {
+                id: 4,
+                title: "University Course Management",
+                description: "Database for managing university courses, students, enrollments, and grades.",
+                tech: ["SQL", "Complex Queries", "Subqueries", "Views"],
+                code: `-- University Course Management Database Schema
+-- Create database
+CREATE DATABASE university_management;
+USE university_management;
+
+-- Create tables
+CREATE TABLE departments (
+    department_id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    code VARCHAR(10) UNIQUE NOT NULL,
+    chair_person VARCHAR(100),
+    office_location VARCHAR(50),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE instructors (
+    instructor_id INT PRIMARY KEY AUTO_INCREMENT,
+    first_name VARCHAR(100) NOT NULL,
+    last_name VARCHAR(100) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    phone VARCHAR(20),
+    office_location VARCHAR(50),
+    department_id INT,
+    hire_date DATE NOT NULL,
+    title ENUM('Professor', 'Associate Professor', 'Assistant Professor', 'Lecturer'),
+    FOREIGN KEY (department_id) REFERENCES departments(department_id)
+);
+
+CREATE TABLE courses (
+    course_id INT PRIMARY KEY AUTO_INCREMENT,
+    course_code VARCHAR(20) UNIQUE NOT NULL,
+    title VARCHAR(255) NOT NULL,
+    description TEXT,
+    credits INT NOT NULL,
+    department_id INT,
+    prerequisite_course_id INT,
+    FOREIGN KEY (department_id) REFERENCES departments(department_id),
+    FOREIGN KEY (prerequisite_course_id) REFERENCES courses(course_id)
+);
+
+CREATE TABLE students (
+    student_id INT PRIMARY KEY AUTO_INCREMENT,
+    first_name VARCHAR(100) NOT NULL,
+    last_name VARCHAR(100) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    phone VARCHAR(20),
+    date_of_birth DATE,
+    enrollment_date DATE NOT NULL,
+    major_department_id INT,
+    status ENUM('Active', 'Graduated', 'Withdrawn') DEFAULT 'Active',
+    FOREIGN KEY (major_department_id) REFERENCES departments(department_id)
+);
+
+CREATE TABLE sections (
+    section_id INT PRIMARY KEY AUTO_INCREMENT,
+    course_id INT NOT NULL,
+    instructor_id INT NOT NULL,
+    semester ENUM('Fall', 'Spring', 'Summer') NOT NULL,
+    year YEAR NOT NULL,
+    room VARCHAR(50),
+    schedule VARCHAR(100),
+    max_capacity INT DEFAULT 30,
+    current_enrollment INT DEFAULT 0,
+    FOREIGN KEY (course_id) REFERENCES courses(course_id),
+    FOREIGN KEY (instructor_id) REFERENCES instructors(instructor_id)
+);
+
+CREATE TABLE enrollments (
+    enrollment_id INT PRIMARY KEY AUTO_INCREMENT,
+    student_id INT NOT NULL,
+    section_id INT NOT NULL,
+    enrollment_date DATE NOT NULL,
+    grade DECIMAL(3,2),
+    status ENUM('Enrolled', 'Dropped', 'Completed') DEFAULT 'Enrolled',
+    FOREIGN KEY (student_id) REFERENCES students(student_id),
+    FOREIGN KEY (section_id) REFERENCES sections(section_id)
+);
+
+-- Sample data
+INSERT INTO departments (name, code, chair_person) VALUES
+('Computer Science', 'CS', 'Dr. Alice Johnson'),
+('Mathematics', 'MATH', 'Dr. Bob Smith'),
+('Physics', 'PHYS', 'Dr. Carol Davis');
+
+INSERT INTO instructors (first_name, last_name, email, department_id, hire_date, title) VALUES
+('Alice', 'Johnson', 'alice.johnson@university.edu', 1, '2015-08-15', 'Professor'),
+('David', 'Wilson', 'david.wilson@university.edu', 1, '2018-01-10', 'Assistant Professor'),
+('Emily', 'Brown', 'emily.brown@university.edu', 2, '2016-03-20', 'Associate Professor');
+
+INSERT INTO courses (course_code, title, credits, department_id) VALUES
+('CS101', 'Introduction to Programming', 3, 1),
+('CS201', 'Data Structures', 3, 1),
+('MATH101', 'Calculus I', 4, 2),
+('CS301', 'Database Systems', 3, 1);
+
+-- Set prerequisites
+UPDATE courses SET prerequisite_course_id = 1 WHERE course_id = 2;
+UPDATE courses SET prerequisite_course_id = 2 WHERE course_id = 4;
+
+INSERT INTO students (first_name, last_name, email, enrollment_date, major_department_id) VALUES
+('John', 'Student', 'john.student@university.edu', '2022-08-20', 1),
+('Sarah', 'Learner', 'sarah.learner@university.edu', '2022-08-20', 1),
+('Mike', 'Scholar', 'mike.scholar@university.edu', '2021-08-15', 2);
+
+-- Useful queries
+-- Student course enrollments with grades
+SELECT s.first_name, s.last_name, 
+       c.course_code, c.title,
+       sec.semester, sec.year,
+       e.grade
+FROM students s
+JOIN enrollments e ON s.student_id = e.student_id
+JOIN sections sec ON e.section_id = sec.section_id
+JOIN courses c ON sec.course_id = c.course_id
+WHERE e.status = 'Completed'
+ORDER BY s.last_name, sec.year, sec.semester;
+
+-- Course enrollment statistics
+SELECT c.course_code, c.title,
+       COUNT(e.enrollment_id) as total_enrollments,
+       AVG(e.grade) as average_grade
+FROM courses c
+JOIN sections sec ON c.course_id = sec.course_id
+JOIN enrollments e ON sec.section_id = e.section_id
+WHERE e.status = 'Completed'
+GROUP BY c.course_id
+ORDER BY total_enrollments DESC;
+
+-- Instructor teaching load
+SELECT i.first_name, i.last_name,
+       COUNT(sec.section_id) as sections_taught,
+       SUM(sec.current_enrollment) as total_students
+FROM instructors i
+JOIN sections sec ON i.instructor_id = sec.instructor_id
+WHERE sec.year = YEAR(CURDATE())
+GROUP BY i.instructor_id
+ORDER BY total_students DESC;
+
+-- Students eligible for graduation
+SELECT s.first_name, s.last_name, s.enrollment_date,
+       SUM(c.credits) as total_credits,
+       AVG(e.grade) as cumulative_gpa
+FROM students s
+JOIN enrollments e ON s.student_id = e.student_id
+JOIN sections sec ON e.section_id = sec.section_id
+JOIN courses c ON sec.course_id = c.course_id
+WHERE e.status = 'Completed' AND s.status = 'Active'
+GROUP BY s.student_id
+HAVING total_credits >= 120 AND cumulative_gpa >= 2.0;`,
+                inputs: [
+                    { id: 'queryType', label: 'Query Type:', type: 'select', options: ['Student Grades', 'Course Stats', 'Instructor Load', 'Graduation Eligibility'], value: 'Student Grades' }
+                ]
+            },
+            {
+                id: 5,
+                title: "Hospital Patient Records System",
+                description: "Medical database for patient records, appointments, treatments, and billing.",
+                tech: ["SQL", "Healthcare Data", "Complex Relationships", "Stored Procedures"],
+                code: `-- Hospital Patient Records Database Schema
+-- Create database
+CREATE DATABASE hospital_management;
+USE hospital_management;
+
+-- Create tables
+CREATE TABLE patients (
+    patient_id INT PRIMARY KEY AUTO_INCREMENT,
+    first_name VARCHAR(100) NOT NULL,
+    last_name VARCHAR(100) NOT NULL,
+    date_of_birth DATE NOT NULL,
+    gender ENUM('Male', 'Female', 'Other'),
+    phone VARCHAR(20),
+    email VARCHAR(255),
+    address TEXT,
+    emergency_contact_name VARCHAR(100),
+    emergency_contact_phone VARCHAR(20),
+    blood_type ENUM('A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE doctors (
+    doctor_id INT PRIMARY KEY AUTO_INCREMENT,
+    first_name VARCHAR(100) NOT NULL,
+    last_name VARCHAR(100) NOT NULL,
+    specialization VARCHAR(100) NOT NULL,
+    phone VARCHAR(20),
+    email VARCHAR(255) UNIQUE NOT NULL,
+    license_number VARCHAR(50) UNIQUE,
+    department VARCHAR(100),
+    is_active BOOLEAN DEFAULT TRUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE appointments (
+    appointment_id INT PRIMARY KEY AUTO_INCREMENT,
+    patient_id INT NOT NULL,
+    doctor_id INT NOT NULL,
+    appointment_date DATE NOT NULL,
+    appointment_time TIME NOT NULL,
+    status ENUM('Scheduled', 'Completed', 'Cancelled', 'No Show') DEFAULT 'Scheduled',
+    reason TEXT,
+    notes TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (patient_id) REFERENCES patients(patient_id),
+    FOREIGN KEY (doctor_id) REFERENCES doctors(doctor_id)
+);
+
+CREATE TABLE medical_records (
+    record_id INT PRIMARY KEY AUTO_INCREMENT,
+    patient_id INT NOT NULL,
+    doctor_id INT NOT NULL,
+    visit_date DATE NOT NULL,
+    diagnosis TEXT,
+    symptoms TEXT,
+    treatment TEXT,
+    prescription TEXT,
+    follow_up_date DATE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (patient_id) REFERENCES patients(patient_id),
+    FOREIGN KEY (doctor_id) REFERENCES doctors(doctor_id)
+);
+
+CREATE TABLE bills (
+    bill_id INT PRIMARY KEY AUTO_INCREMENT,
+    patient_id INT NOT NULL,
+    appointment_id INT,
+    total_amount DECIMAL(10,2) NOT NULL,
+    insurance_coverage DECIMAL(10,2) DEFAULT 0,
+    patient_responsibility DECIMAL(10,2) NOT NULL,
+    bill_date DATE NOT NULL,
+    due_date DATE NOT NULL,
+    status ENUM('Pending', 'Paid', 'Overdue') DEFAULT 'Pending',
+    FOREIGN KEY (patient_id) REFERENCES patients(patient_id),
+    FOREIGN KEY (appointment_id) REFERENCES appointments(appointment_id)
+);
+
+CREATE TABLE lab_tests (
+    test_id INT PRIMARY KEY AUTO_INCREMENT,
+    patient_id INT NOT NULL,
+    doctor_id INT NOT NULL,
+    test_name VARCHAR(255) NOT NULL,
+    test_date DATE NOT NULL,
+    results TEXT,
+    normal_range TEXT,
+    interpretation TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (patient_id) REFERENCES patients(patient_id),
+    FOREIGN KEY (doctor_id) REFERENCES doctors(doctor_id)
+);
+
+-- Sample data
+INSERT INTO patients (first_name, last_name, date_of_birth, gender, phone) VALUES
+('John', 'Doe', '1985-03-15', 'Male', '555-1234'),
+('Jane', 'Smith', '1990-07-22', 'Female', '555-5678'),
+('Robert', 'Johnson', '1978-11-30', 'Male', '555-9012');
+
+INSERT INTO doctors (first_name, last_name, specialization, email, license_number) VALUES
+('Michael', 'Chen', 'Cardiology', 'mchen@hospital.com', 'CARD12345'),
+('Sarah', 'Williams', 'Pediatrics', 'swilliams@hospital.com', 'PED67890'),
+('David', 'Brown', 'Orthopedics', 'dbrown@hospital.com', 'ORTH54321');
+
+-- Useful queries
+-- Doctor appointment schedule
+SELECT d.first_name, d.last_name, d.specialization,
+       a.appointment_date, a.appointment_time,
+       p.first_name as patient_first, p.last_name as patient_last
+FROM doctors d
+JOIN appointments a ON d.doctor_id = a.doctor_id
+JOIN patients p ON a.patient_id = p.patient_id
+WHERE a.appointment_date = CURDATE()
+ORDER BY d.doctor_id, a.appointment_time;
+
+-- Patient medical history
+SELECT p.first_name, p.last_name,
+       mr.visit_date, mr.diagnosis, mr.treatment,
+       d.first_name as doctor_first, d.last_name as doctor_last
+FROM patients p
+JOIN medical_records mr ON p.patient_id = mr.patient_id
+JOIN doctors d ON mr.doctor_id = d.doctor_id
+WHERE p.patient_id = 1
+ORDER BY mr.visit_date DESC;
+
+-- Outstanding patient bills
+SELECT p.first_name, p.last_name,
+       b.bill_date, b.total_amount, b.patient_responsibility,
+       b.due_date, b.status
+FROM patients p
+JOIN bills b ON p.patient_id = b.patient_id
+WHERE b.status = 'Pending' OR b.status = 'Overdue'
+ORDER BY b.due_date;
+
+-- Most common diagnoses
+SELECT diagnosis, COUNT(*) as frequency
+FROM medical_records
+WHERE diagnosis IS NOT NULL AND diagnosis != ''
+GROUP BY diagnosis
+ORDER BY frequency DESC
+LIMIT 10;
+
+-- Doctor patient load
+SELECT d.first_name, d.last_name, d.specialization,
+       COUNT(DISTINCT a.patient_id) as unique_patients,
+       COUNT(a.appointment_id) as total_appointments
+FROM doctors d
+LEFT JOIN appointments a ON d.doctor_id = a.doctor_id
+WHERE a.appointment_date BETWEEN DATE_SUB(CURDATE(), INTERVAL 30 DAY) AND CURDATE()
+GROUP BY d.doctor_id
+ORDER BY total_appointments DESC;`,
+                inputs: [
+                    { id: 'queryType', label: 'Query Type:', type: 'select', options: ['Doctor Schedule', 'Patient History', 'Outstanding Bills', 'Common Diagnoses', 'Doctor Workload'], value: 'Doctor Schedule' }
+                ]
+            }
+        ];
+
+        // HTML/CSS Project Data
+        const htmlcssProjectsData = [
+            {
+                id: 1,
+                title: "Crestron System Redesign – HTML Project",
+                description: "This project showcases a redesigned Crestron control system that improves usability, visuals, and workflow compared to the current Crestron interface. I collaborated with students from a UX design class to plan and create a more intuitive user experience. The project focuses on cleaner navigation, smoother interactions, and overall better system efficiency.",
+                tech: ["HTML", "CSS", "JavaScript", "UX Design"],
+                link: "https://www.theprojectors.net/",
+                image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%23782F40'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='18' fill='white'%3ECrestron System Redesign%3C/text%3E%3Ctext x='50%25' y='65%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='12' fill='white'%3EClick to view project%3C/text%3E%3C/svg%3E"
+            },
+            {
+                id: 2,
+                title: "Picture Kiosk – Project Lead",
+                description: "I served as the project lead and collaborated with teammates to design and build this picture-taking kiosk interface. The system is built for photographers who want a simple and fast way to take photos and start earning money. I delegated tasks such as image formatting and layout adjustments to classmates, and conducted user testing with multiple people to identify and fix bugs. Features a double-click admin settings feature, which is password-protected (password: 1234) so visitors can try it out.",
+                tech: ["HTML", "CSS", "JavaScript", "Project Management"],
+                link: "https://christophercastro-dev.github.io/Sprint-3-Uuhhhooo-I-don-t-know/",
+                image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%23782F40'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='18' fill='white'%3EPicture Kiosk Project%3C/text%3E%3Ctext x='50%25' y='65%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='12' fill='white'%3EClick to view project%3C/text%3E%3C/svg%3E"
+            }
+        ];
+
+        // Store dynamic inputs state
+        const dynamicInputsState = {};
+
+        // Navigation functions
+        function navigateToLanguages() {
+            document.getElementById('home').style.display = 'none';
+            document.getElementById('languages').style.display = 'block';
+            document.getElementById('cpp-projects').style.display = 'none';
+            document.getElementById('java-projects').style.display = 'none';
+            document.getElementById('htmlcss-projects').style.display = 'none';
+            document.getElementById('sql-projects').style.display = 'none';
+            document.getElementById('email').style.display = 'none';
+            window.scrollTo(0, 0);
+        }
+
+        function navigateToHome() {
+            document.getElementById('home').style.display = 'flex';
+            document.getElementById('languages').style.display = 'none';
+            document.getElementById('cpp-projects').style.display = 'none';
+            document.getElementById('java-projects').style.display = 'none';
+            document.getElementById('htmlcss-projects').style.display = 'none';
+            document.getElementById('sql-projects').style.display = 'none';
+            document.getElementById('email').style.display = 'none';
+            window.scrollTo(0, 0);
+        }
+
+        function navigateToEmail() {
+            document.getElementById('home').style.display = 'none';
+            document.getElementById('languages').style.display = 'none';
+            document.getElementById('cpp-projects').style.display = 'none';
+            document.getElementById('java-projects').style.display = 'none';
+            document.getElementById('htmlcss-projects').style.display = 'none';
+            document.getElementById('sql-projects').style.display = 'none';
+            document.getElementById('email').style.display = 'flex';
+            window.scrollTo(0, 0);
+        }
+
+        function navigateToProjects(language) {
+            if (language === 'cpp') {
+                document.getElementById('home').style.display = 'none';
+                document.getElementById('languages').style.display = 'none';
+                document.getElementById('cpp-projects').style.display = 'block';
+                document.getElementById('java-projects').style.display = 'none';
+                document.getElementById('htmlcss-projects').style.display = 'none';
+                document.getElementById('sql-projects').style.display = 'none';
+                document.getElementById('email').style.display = 'none';
+                
+                // Populate C++ projects grid
+                const projectsGrid = document.getElementById('cpp-projects-grid');
+                projectsGrid.innerHTML = '';
+                
+                cppProjectsData.forEach(project => {
+                    const projectCard = document.createElement('div');
+                    projectCard.className = 'project-card fade-in';
+                    
+                    // Create input fields HTML
+                    let inputsHTML = '';
+                    if (project.inputs) {
+                        inputsHTML = `
+                            <div class="input-section">
+                                <h4 style="margin-bottom: 1rem; color: var(--dark-gray);">Program Inputs:</h4>
+                                ${project.inputs.map(input => `
+                                    <div class="input-group">
+                                        <label for="${input.id}-${project.id}">${input.label}</label>
+                                        <input type="${input.type}" id="${input.id}-${project.id}" value="${input.value}">
+                                    </div>
+                                `).join('')}
+                            </div>
+                        `;
+                    } else if (project.dynamicInputs) {
+                        // Initialize dynamic inputs state
+                        if (!dynamicInputsState[project.id]) {
+                            dynamicInputsState[project.id] = {
+                                employees: 3,
+                                days: [2, 5, 1]
+                            };
+                        }
+                        
+                        inputsHTML = `
+                            <div class="input-section">
+                                <h4 style="margin-bottom: 1rem; color: var(--dark-gray);">Program Inputs:</h4>
+                                <div class="input-group">
+                                    <label for="employees-${project.id}">Number of Employees:</label>
+                                    <input type="number" id="employees-${project.id}" value="${dynamicInputsState[project.id].employees}" min="1" max="10" onchange="updateEmployeeInputs(${project.id})">
+                                </div>
+                                <div id="employee-days-${project.id}">
+                                    ${dynamicInputsState[project.id].days.map((day, index) => `
+                                        <div class="input-group">
+                                            <label for="day-${index}-${project.id}">Days Employee ${index + 1} Absent:</label>
+                                            <input type="number" id="day-${index}-${project.id}" value="${day}" min="0">
+                                        </div>
+                                    `).join('')}
+                                </div>
+                                <button class="update-button" onclick="updateEmployeeInputs(${project.id})">Update Employee Fields</button>
+                            </div>
+                        `;
+                    }
+                    
+                    projectCard.innerHTML = `
+                        <div class="project-info">
+                            <h3 class="project-title">${project.title}</h3>
+                            <p class="project-description">${project.description}</p>
+                            <div class="project-tech">
+                                ${project.tech.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
+                            </div>
+                            ${inputsHTML}
+                            <div class="code-runner">
+                                <div class="code-header">
+                                    <span class="code-title">C++ Code</span>
+                                    <button class="run-button" onclick="runCppCode(${project.id})">Run Code</button>
+                                </div>
+                                <div class="code-content">
+                                    <pre>${project.code}</pre>
+                                </div>
+                                <div class="code-output" id="output-${project.id}">Click "Run Code" to see the output</div>
+                            </div>
+                        </div>
+                    `;
+                    
+                    projectsGrid.appendChild(projectCard);
+                });
+                
+            } else if (language === 'java') {
+                document.getElementById('home').style.display = 'none';
+                document.getElementById('languages').style.display = 'none';
+                document.getElementById('cpp-projects').style.display = 'none';
+                document.getElementById('java-projects').style.display = 'block';
+                document.getElementById('htmlcss-projects').style.display = 'none';
+                document.getElementById('sql-projects').style.display = 'none';
+                document.getElementById('email').style.display = 'none';
+                
+                // Populate Java projects grid
+                const projectsGrid = document.getElementById('java-projects-grid');
+                projectsGrid.innerHTML = '';
+                
+                javaProjectsData.forEach(project => {
+                    const projectCard = document.createElement('div');
+                    projectCard.className = 'project-card fade-in';
+                    
+                    // Create input fields HTML
+                    let inputsHTML = '';
+                    if (project.inputs) {
+                        inputsHTML = `
+                            <div class="input-section">
+                                <h4 style="margin-bottom: 1rem; color: var(--dark-gray);">Program Inputs:</h4>
+                                ${project.inputs.map(input => {
+                                    if (input.type === 'select') {
+                                        return `
+                                            <div class="input-group">
+                                                <label for="${input.id}-${project.id}">${input.label}</label>
+                                                <select id="${input.id}-${project.id}">
+                                                    ${input.options.map(option => 
+                                                        `<option value="${option}" ${option === input.value ? 'selected' : ''}>${option}</option>`
+                                                    ).join('')}
+                                                </select>
+                                            </div>
+                                        `;
+                                    } else {
+                                        return `
+                                            <div class="input-group">
+                                                <label for="${input.id}-${project.id}">${input.label}</label>
+                                                <input type="${input.type}" id="${input.id}-${project.id}" value="${input.value}">
+                                            </div>
+                                        `;
+                                    }
+                                }).join('')}
+                            </div>
+                        `;
+                    }
+                    
+                    projectCard.innerHTML = `
+                        <div class="project-info">
+                            <h3 class="project-title">${project.title}</h3>
+                            <p class="project-description">${project.description}</p>
+                            <div class="project-tech">
+                                ${project.tech.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
+                            </div>
+                            ${inputsHTML}
+                            <div class="code-runner">
+                                <div class="code-header">
+                                    <span class="code-title">Java Code</span>
+                                    <button class="run-button" onclick="runJavaCode(${project.id})">Run Code</button>
+                                </div>
+                                <div class="code-content">
+                                    <pre>${project.code}</pre>
+                                </div>
+                                <div class="code-output" id="java-output-${project.id}">Click "Run Code" to see the output</div>
+                            </div>
+                        </div>
+                    `;
+                    
+                    projectsGrid.appendChild(projectCard);
+                });
+            } else if (language === 'htmlcss') {
+                document.getElementById('home').style.display = 'none';
+                document.getElementById('languages').style.display = 'none';
+                document.getElementById('cpp-projects').style.display = 'none';
+                document.getElementById('java-projects').style.display = 'none';
+                document.getElementById('htmlcss-projects').style.display = 'block';
+                document.getElementById('sql-projects').style.display = 'none';
+                document.getElementById('email').style.display = 'none';
+                
+                // Populate HTML/CSS projects grid
+                const projectsGrid = document.getElementById('htmlcss-projects-grid');
+                projectsGrid.innerHTML = '';
+                
+                htmlcssProjectsData.forEach(project => {
+                    const projectCard = document.createElement('div');
+                    projectCard.className = 'project-card fade-in';
+                    
+                    projectCard.innerHTML = `
+                        <div class="project-image">
+                            <img src="${project.image}" alt="${project.title}">
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title">${project.title}</h3>
+                            <p class="project-description">${project.description}</p>
+                            <div class="project-tech">
+                                ${project.tech.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
+                            </div>
+                            <a href="${project.link}" target="_blank" class="project-link">View Project</a>
+                        </div>
+                    `;
+                    
+                    projectsGrid.appendChild(projectCard);
+                });
+            } else if (language === 'sql') {
+                document.getElementById('home').style.display = 'none';
+                document.getElementById('languages').style.display = 'none';
+                document.getElementById('cpp-projects').style.display = 'none';
+                document.getElementById('java-projects').style.display = 'none';
+                document.getElementById('htmlcss-projects').style.display = 'none';
+                document.getElementById('sql-projects').style.display = 'block';
+                document.getElementById('email').style.display = 'none';
+                
+                // Populate SQL projects grid
+                const projectsGrid = document.getElementById('sql-projects-grid');
+                projectsGrid.innerHTML = '';
+                
+                sqlProjectsData.forEach(project => {
+                    const projectCard = document.createElement('div');
+                    projectCard.className = 'project-card fade-in';
+                    
+                    // Create input fields HTML
+                    let inputsHTML = '';
+                    if (project.inputs) {
+                        inputsHTML = `
+                            <div class="input-section">
+                                <h4 style="margin-bottom: 1rem; color: var(--dark-gray);">Query Options:</h4>
+                                ${project.inputs.map(input => {
+                                    if (input.type === 'select') {
+                                        return `
+                                            <div class="input-group">
+                                                <label for="${input.id}-${project.id}">${input.label}</label>
+                                                <select id="${input.id}-${project.id}">
+                                                    ${input.options.map(option => 
+                                                        `<option value="${option}" ${option === input.value ? 'selected' : ''}>${option}</option>`
+                                                    ).join('')}
+                                                </select>
+                                            </div>
+                                        `;
+                                    } else {
+                                        return `
+                                            <div class="input-group">
+                                                <label for="${input.id}-${project.id}">${input.label}</label>
+                                                <input type="${input.type}" id="${input.id}-${project.id}" value="${input.value}">
+                                            </div>
+                                        `;
+                                    }
+                                }).join('')}
+                            </div>
+                        `;
+                    }
+                    
+                    projectCard.innerHTML = `
+                        <div class="project-info">
+                            <h3 class="project-title">${project.title}</h3>
+                            <p class="project-description">${project.description}</p>
+                            <div class="project-tech">
+                                ${project.tech.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
+                            </div>
+                            ${inputsHTML}
+                            <div class="code-runner">
+                                <div class="code-header">
+                                    <span class="code-title">SQL Schema & Queries</span>
+                                    <button class="run-button" onclick="runSqlCode(${project.id})">Run Query</button>
+                                </div>
+                                <div class="code-content">
+                                    <pre>${project.code}</pre>
+                                </div>
+                                <div class="code-output" id="sql-output-${project.id}">Click "Run Query" to see the results</div>
+                            </div>
+                        </div>
+                    `;
+                    
+                    projectsGrid.appendChild(projectCard);
+                });
+            }
+            
+            // Trigger fade-in animations
+            setTimeout(() => {
+                document.querySelectorAll('.fade-in').forEach(el => {
+                    el.classList.add('active');
+                });
+            }, 100);
+            
+            window.scrollTo(0, 0);
+        }
+
+        // Update employee input fields dynamically
+        function updateEmployeeInputs(projectId) {
+            const employeesInput = document.getElementById(`employees-${projectId}`);
+            const numEmployees = parseInt(employeesInput.value) || 1;
+            
+            // Update state
+            if (!dynamicInputsState[projectId]) {
+                dynamicInputsState[projectId] = {
+                    employees: numEmployees,
+                    days: Array(numEmployees).fill(0)
+                };
+            } else {
+                const currentDays = dynamicInputsState[projectId].days;
+                dynamicInputsState[projectId] = {
+                    employees: numEmployees,
+                    days: Array(numEmployees).fill(0).map((_, i) => currentDays[i] || 0)
+                };
+            }
+            
+            // Update UI
+            const employeeDaysContainer = document.getElementById(`employee-days-${projectId}`);
+            employeeDaysContainer.innerHTML = dynamicInputsState[projectId].days.map((day, index) => `
+                <div class="input-group">
+                    <label for="day-${index}-${projectId}">Days Employee ${index + 1} Absent:</label>
+                    <input type="number" id="day-${index}-${projectId}" value="${day}" min="0">
+                </div>
+            `).join('');
+        }
+
+        // C++ Code Execution with User Inputs
+        function runCppCode(projectId) {
+            const outputElement = document.getElementById(`output-${projectId}`);
+            outputElement.innerHTML = '<span class="loading">Running code...</span>';
+            
+            // Get user inputs
+            const project = cppProjectsData.find(p => p.id === projectId);
+            const inputs = {};
+            
+            if (project.inputs) {
+                project.inputs.forEach(input => {
+                    const inputElement = document.getElementById(`${input.id}-${projectId}`);
+                    inputs[input.id] = inputElement.value;
+                });
+            } else if (project.dynamicInputs) {
+                // Get dynamic inputs
+                const employeesInput = document.getElementById(`employees-${projectId}`);
+                inputs.employees = parseInt(employeesInput.value) || 1;
+                
+                inputs.days = [];
+                for (let i = 0; i < inputs.employees; i++) {
+                    const dayInput = document.getElementById(`day-${i}-${projectId}`);
+                    inputs.days.push(parseInt(dayInput.value) || 0);
+                }
+            }
+            
+            // Simulate code execution with a delay
+            setTimeout(() => {
+                let output = "";
+                
+                switch(projectId) {
+                    case 1: // Credit Card Qualification
+                        const salary = parseFloat(inputs.salary);
+                        const years = parseInt(inputs.years);
+                        output = `This program will determine if you qualify\nfor our credit card.\nWhat is your annual salary? ${salary}\nHow many years have you worked at your current job? ${years}\n`;
+                        if (salary >= 17000.0 && years >= 2) {
+                            output += "Congratulations! You qualify for the credit card.\nThe annual interest rate on this card is 12%.";
+                        } else {
+                            output += "Sorry, you do not qualify for the credit card.\nTo qualify, you must have worked at your current job\nfor at least 2 years and earn at least $17,000 annually.";
+                        }
+                        break;
+                        
+                    case 2: // Average Calculator
+                        const num1 = parseFloat(inputs.num1);
+                        const num2 = parseFloat(inputs.num2);
+                        const average = (num1 + num2) / 2;
+                        output = `Enter the first number: ${num1}\nEnter the second number: ${num2}\nThe average of ${num1} and ${num2} is ${average}`;
+                        break;
+                        
+                    case 3: // Number Equality Checker
+                        const int1 = parseInt(inputs.num1);
+                        const int2 = parseInt(inputs.num2);
+                        output = `Enter the first integer: ${int1}\nEnter the second integer: ${int2}\n`;
+                        if (int1 === int2) {
+                            output += "The numbers are equal.";
+                        } else {
+                            output += "The numbers are not equal.";
+                        }
+                        break;
+                        
+                    case 4: // Employee Absence Tracker
+                        const employees = parseInt(inputs.employees);
+                        const totalDays = inputs.days.reduce((sum, day) => sum + day, 0);
+                        const avgDays = totalDays / employees;
+                        
+                        output = `Enter the number of employees: ${employees}\n`;
+                        inputs.days.forEach((day, index) => {
+                            output += `Enter the days employee ${index + 1} was absent: ${day}\n`;
+                        });
+                        output += `Average days out is ${avgDays.toFixed(1)} days.`;
+                        break;
+                        
+                    case 5: // Student Grade Management
+                        const quiz1 = parseInt(inputs.quiz1);
+                        const quiz2 = parseInt(inputs.quiz2);
+                        const quiz3 = parseInt(inputs.quiz3);
+                        const quiz4 = parseInt(inputs.quiz4);
+                        const midterm = parseInt(inputs.midterm);
+                        const final = parseInt(inputs.final);
+                        const attendance = parseInt(inputs.attendance);
+                        
+                        const quizAvg = (quiz1 + quiz2 + quiz3 + quiz4) / 4;
+                        const finalAvg = Math.round((midterm + final + quizAvg) / 3);
+                        
+                        let letterGrade = 'F';
+                        if (finalAvg >= 90) letterGrade = 'A';
+                        else if (finalAvg >= 80) letterGrade = 'B';
+                        else if (finalAvg >= 70) letterGrade = 'C';
+                        else if (finalAvg >= 60) letterGrade = 'D';
+                        
+                        output = `Doe, John\tAverage: ${finalAvg}\tLetter Grade: ${letterGrade}\n`;
+                        if (finalAvg >= 60 && attendance >= 30) {
+                            output += "The student has PASSED the course.";
+                        } else if (attendance < 30) {
+                            output += "The student has FAILED the course due to lack of attendance.";
+                        } else {
+                            output += "The student has FAILED the course.";
+                        }
+                        break;
+                        
+                    default:
+                        output = "Program executed successfully.";
+                }
+                
+                outputElement.innerHTML = output;
+            }, 1000);
+        }
+
+        // Java Code Execution with User Inputs
+        function runJavaCode(projectId) {
+            const outputElement = document.getElementById(`java-output-${projectId}`);
+            outputElement.innerHTML = '<span class="loading">Running code...</span>';
+            
+            // Get user inputs
+            const project = javaProjectsData.find(p => p.id === projectId);
+            const inputs = {};
+            
+            if (project.inputs) {
+                project.inputs.forEach(input => {
+                    const inputElement = document.getElementById(`${input.id}-${projectId}`);
+                    if (input.type === 'select') {
+                        inputs[input.id] = inputElement.value;
+                    } else {
+                        inputs[input.id] = inputElement.value;
+                    }
+                });
+            }
+            
+            // Simulate code execution with a delay
+            setTimeout(() => {
+                let output = "";
+                
+                switch(projectId) {
+                    case 1: // Volunteer Management System
+                        const firstName = inputs.firstName || 'John';
+                        const lastName = inputs.lastName || 'Doe';
+                        const email = inputs.email || 'john.doe@email.com';
+                        const phone = inputs.phone || '555-123-4567';
+                        const hours1 = parseInt(inputs.hours1) || 10;
+                        const hours2 = parseInt(inputs.hours2) || 5;
+                        
+                        output = `Creating new Volunteer object...\n`;
+                        output += `Initial volunteer created: ${firstName} ${lastName}\n`;
+                        output += `Adding ${hours1} volunteer hours...\n`;
+                        output += `Adding ${hours2} more volunteer hours...\n`;
+                        output += `\nFinal Volunteer Information:\n`;
+                        output += `Volunteer: ${firstName} ${lastName} | Email: ${email} | Phone: ${phone} | Hours: ${hours1 + hours2}\n`;
+                        output += `\nVolunteer management system completed successfully.`;
+                        break;
+                        
+                    case 2: // Hospital Patient Management System
+                        const patientType = inputs.patientType || 'InPatient';
+                        const patientFirstName = inputs.firstName || 'John';
+                        const patientLastName = inputs.lastName || 'Smith';
+                        const patientId = parseInt(inputs.patientId) || 1001;
+                        const admitDate = inputs.admitDate || '12/01/2024';
+                        const releaseDate = inputs.releaseDate || '12/05/2024';
+                        const roomNumber = parseInt(inputs.roomNumber) || 201;
+                        const clinicNumber = parseInt(inputs.clinicNumber) || 5;
+                        const procedureDate = inputs.procedureDate || '12/10/2024';
+                        const visitNumber = parseInt(inputs.visitNumber) || 3;
+                        
+                        output = "=== Hospital Patient Management System ===\n";
+                        output += "Enter your choice:\n";
+                        output += "1. Add InPatient\n";
+                        output += "2. Add OutPatient\n";
+                        output += "3. List All Patients\n";
+                        output += "4. Exit\n";
+                        
+                        if (patientType === 'InPatient') {
+                            output += "\nAdding InPatient...\n";
+                            output += `Enter the first Name: ${patientFirstName}\n`;
+                            output += `Enter the last Name: ${patientLastName}\n`;
+                            output += `Enter the patient ID: ${patientId}\n`;
+                            output += `Enter the date admitted (mm/dd/yyyy): ${admitDate}\n`;
+                            output += `Has the patient been released? (y/n): y\n`;
+                            output += `Enter date released (mm/dd/yyyy): ${releaseDate}\n`;
+                            output += `Enter the room number: ${roomNumber}\n`;
+                            output += "\nInPatient added successfully!\n\n";
+                            output += "Listing all patients:\n";
+                            output += `Patient [firstName=${patientFirstName}, lastName=${patientLastName}, patientID=${patientId}] InPatient [dateAdmitted=2024-12-01, dateReleased=2024-12-05, roomNumber=${roomNumber}]\n`;
+                            output += `Length of stay is 4 day(s).\n\n`;
+                        } else {
+                            output += "\nAdding OutPatient...\n";
+                            output += `Enter the first Name: ${patientFirstName}\n`;
+                            output += `Enter the Last Name: ${patientLastName}\n`;
+                            output += `Enter the patient ID: ${patientId}\n`;
+                            output += `Enter the clinic Number: ${clinicNumber}\n`;
+                            output += `enter the procedure Date (mm/dd/yyyy): ${procedureDate}\n`;
+                            output += `Enter the Visit Number: ${visitNumber}\n`;
+                            output += "\nOutPatient added successfully!\n\n";
+                            output += "Listing all patients:\n";
+                            output += `Patient [firstName=${patientFirstName}, lastName=${patientLastName}, patientID=${patientId}] OutPatient [visitNumber=${visitNumber}, clinicNumber=${clinicNumber}, procedureDate=2024-12-10]\n`;
+                            output += `Length of stay is 0 day(s).\n\n`;
+                        }
+                        
+                        output += "System demonstrates:\n";
+                        output += "- Object-Oriented Programming with inheritance\n";
+                        output += "- Package management (edu.seminolestate.patients)\n";
+                        output += "- Input validation and error handling\n";
+                        output += "- Date manipulation with LocalDate\n";
+                        output += "- ArrayList for dynamic patient storage\n";
+                        break;
+                        
+                    case 3: // Purchase Management System
+                        const productName = inputs.productName || 'Laptop';
+                        const storeName = inputs.storeName || 'Best Buy';
+                        const purchaseDate = inputs.purchaseDate || '12/15/2024';
+                        const cost = parseFloat(inputs.cost) || 899.99;
+                        
+                        output = "=== Purchase Management System ===\n";
+                        output += "Loading purchases from file...\n";
+                        output += "No existing purchase file found. Starting with an empty list.\n\n";
+                        output += "Enter your choice:\n";
+                        output += "1. Add a Purchase\n";
+                        output += "2. Display All Purchases\n";
+                        output += "3. Exit\n\n";
+                        output += "Adding new purchase...\n";
+                        output += `Enter product name: ${productName}\n`;
+                        output += `Enter store name: ${storeName}\n`;
+                        output += `Enter purchase date (like 6/23/2016): ${purchaseDate}\n`;
+                        output += `Enter cost: ${cost}\n`;
+                        output += "\nPurchase added successfully!\n\n";
+                        output += "Displaying all purchases:\n";
+                        output += `Purchase [Product: ${productName}, Store: ${storeName}, Date: 2024-12-15, Cost: $${cost.toFixed(2)}]\n\n`;
+                        output += "System demonstrates:\n";
+                        output += "- File I/O operations\n";
+                        output += "- Custom exception handling\n";
+                        output += "- Data validation\n";
+                        output += "- ArrayList for data storage\n";
+                        break;
+                        
+                    case 4: // Sellable Management System
+                        const itemType = inputs.itemType || 'Stock';
+                        const stockName = inputs.stockName || 'AAPL';
+                        const shares = parseFloat(inputs.shares) || 100;
+                        const pricePerShare = parseFloat(inputs.pricePerShare) || 150.25;
+                        const dateSold = inputs.dateSold || '12/20/2024';
+                        const purchasePrice = parseFloat(inputs.purchasePrice) || 25000;
+                        const model = inputs.model || 'F-150';
+                        const modelYear = parseInt(inputs.modelYear) || 2023;
+                        const cargoCapacity = parseFloat(inputs.cargoCapacity) || 1500;
+                        const horsepower = parseFloat(inputs.horsepower) || 400;
+                        const numberOfSeats = parseInt(inputs.numberOfSeats) || 5;
+                        
+                        output = "=== Sellable Management System ===\n";
+                        output += "1. Add a stock\n";
+                        output += "2. Add a truck\n";
+                        output += "3. Add an automobile\n";
+                        output += "4. Display all sales\n";
+                        output += "5. Exit\n\n";
+                        
+                        if (itemType === 'Stock') {
+                            output += "Adding stock...\n";
+                            output += `Enter stock name: ${stockName}\n`;
+                            output += `Enter the number of shares: ${shares}\n`;
+                            output += `Enter the per share: ${pricePerShare}\n`;
+                            output += `Enter date sold (like 6/23/2016): ${dateSold}\n`;
+                            output += "Stock added successfully!\n\n";
+                            output += "Displaying all sales:\n";
+                            output += `Stock [stockName=${stockName}, shares=${shares}, pricePerShare=${pricePerShare}, dateSold=2024-12-20]\n`;
+                            output += `Sale Price: $${(shares * pricePerShare).toFixed(2)}\n`;
+                        } else if (itemType === 'Truck') {
+                            output += "Adding truck...\n";
+                            output += `Enter the purchase price: ${purchasePrice}\n`;
+                            output += `Enter the model: ${model}\n`;
+                            output += `Enter the year of the truck: ${modelYear}\n`;
+                            output += `Enter the cargo capacity: ${cargoCapacity}\n`;
+                            output += `Enter the horsepower: ${horsepower}\n`;
+                            output += "Truck added successfully!\n\n";
+                            output += "Displaying all sales:\n";
+                            output += `Vehicle [purchasePrice=${purchasePrice}, model=${model}, modelYear=${modelYear}], Truck [cargoCapacity=${cargoCapacity}, horsepower=${horsepower}]\n`;
+                            output += `Sale Price: $${(purchasePrice * Math.pow(0.89, 2024 - modelYear)).toFixed(2)}\n`;
+                        } else {
+                            output += "Adding automobile...\n";
+                            output += `Enter the purchase price: ${purchasePrice}\n`;
+                            output += `Enter the model: ${model}\n`;
+                            output += `Enter the year of the automobile: ${modelYear}\n`;
+                            output += `Enter the number of seats: ${numberOfSeats}\n`;
+                            output += "Automobile added successfully!\n\n";
+                            output += "Displaying all sales:\n";
+                            output += `Vehicle [purchasePrice=${purchasePrice}, model=${model}, modelYear=${modelYear}], Automobile [numberOfSeats=${numberOfSeats}]\n`;
+                            output += `Sale Price: $${(purchasePrice * Math.pow(0.85, 2024 - modelYear)).toFixed(2)}\n`;
+                        }
+                        
+                        output += "\nSystem demonstrates:\n";
+                        output += "- Interface implementation (Sellable)\n";
+                        output += "- Inheritance hierarchy\n";
+                        output += "- Polymorphism with different sellable types\n";
+                        output += "- Multiple package organization\n";
+                        output += "- Complex business logic for sale calculations\n";
+                        break;
+                        
+                    case 5: // Property Management System
+                        const propertyType = inputs.propertyType || 'House';
+                        const propertyID = parseInt(inputs.propertyID) || 1001;
+                        const address = inputs.address || '123 Main St';
+                        const bathrooms = parseFloat(inputs.bathrooms) || 2.5;
+                        const bedrooms = parseInt(inputs.bedrooms) || 3;
+                        const lotSize = parseFloat(inputs.lotSize) || 5000;
+                        const value = parseFloat(inputs.value) || 250000;
+                        const rent = parseFloat(inputs.rent) || 1500;
+                        
+                        output = "=== Property Management System ===\n";
+                        output += "Loading properties from file...\n";
+                        output += "No existing properties file found. Starting with an empty list.\n\n";
+                        output += "Menu:\n";
+                        output += "1. Add House\n";
+                        output += "2. Add Apartment\n";
+                        output += "3. List all properties by ID\n";
+                        output += "4. List all properties by Address\n";
+                        output += "5. Exit\n\n";
+                        
+                        if (propertyType === 'House') {
+                            output += "Adding house...\n";
+                            output += `Enter the property ID: ${propertyID}\n`;
+                            output += `Enter the property address: ${address}\n`;
+                            output += `Enter the property number of bathrooms: ${bathrooms}\n`;
+                            output += `Enter the property number of bedrooms: ${bedrooms}\n`;
+                            output += `Enter the lot size: ${lotSize}\n`;
+                            output += `Enter the value of the property in dollars & cents (like 200000.50): ${value}\n`;
+                            output += "House added successfully!\n\n";
+                        } else {
+                            output += "Adding apartment...\n";
+                            output += `Enter the property ID: ${propertyID}\n`;
+                            output += `Enter the property address: ${address}\n`;
+                            output += `Enter the property number of bathrooms: ${bathrooms}\n`;
+                            output += `Enter the property number of bedrooms: ${bedrooms}\n`;
+                            output += `Enter the monthly rent: ${rent}\n`;
+                            output += "Apartment added successfully!\n\n";
+                        }
+                        
+                        output += "Listing properties by ID:\n";
+                        if (propertyType === 'House') {
+                            output += `Property [propertyID=${propertyID}, address=${address}, numberOfBaths=${bathrooms}, numberOfBedrooms=${bedrooms}] House [lotSize=${lotSize}, value=${value}]\n`;
+                        } else {
+                            output += `Property [propertyID=${propertyID}, address=${address}, numberOfBaths=${bathrooms}, numberOfBedrooms=${bedrooms}] Apartment [unitRent=${rent}]\n`;
+                        }
+                        
+                        output += "\nSystem demonstrates:\n";
+                        output += "- Object-Oriented Programming with inheritance\n";
+                        output += "- File I/O with serialization\n";
+                        output += "- Custom Comparator implementation\n";
+                        output += "- Input validation and exception handling\n";
+                        output += "- ArrayList for property management\n";
+                        output += "- Menu-driven user interface\n";
+                        break;
+                        
+                    default:
+                        output = "Java program executed successfully.";
+                }
+                
+                outputElement.innerHTML = output;
+            }, 1000);
+        }
+
+        // SQL Query Execution
+        function runSqlCode(projectId) {
+            const outputElement = document.getElementById(`sql-output-${projectId}`);
+            outputElement.innerHTML = '<span class="loading">Executing query...</span>';
+            
+            // Get user inputs
+            const project = sqlProjectsData.find(p => p.id === projectId);
+            const inputs = {};
+            
+            if (project.inputs) {
+                project.inputs.forEach(input => {
+                    const inputElement = document.getElementById(`${input.id}-${projectId}`);
+                    if (input.type === 'select') {
+                        inputs[input.id] = inputElement.value;
+                    } else {
+                        inputs[input.id] = inputElement.value;
+                    }
+                });
+            }
+            
+            // Simulate query execution with a delay
+            setTimeout(() => {
+                let output = "";
+                
+                switch(projectId) {
+                    case 1: // Library Management
+                        const queryType = inputs.queryType || 'Available Books';
+                        
+                        output = "=== Library Management Database ===\n\n";
+                        
+                        if (queryType === 'Available Books') {
+                            output += "Query: Find all available books\n";
+                            output += "----------------------------------------\n";
+                            output += "book_id | title                    | author              | available_copies\n";
+                            output += "--------|--------------------------|---------------------|----------------\n";
+                            output += "1       | The Great Gatsby         | F. Scott Fitzgerald | 3\n";
+                            output += "2       | To Kill a Mockingbird    | Harper Lee          | 2\n";
+                            output += "3       | 1984                     | George Orwell       | 4\n";
+                            output += "4       | Pride and Prejudice      | Jane Austen         | 2\n";
+                        } else if (queryType === 'Overdue Loans') {
+                            output += "Query: Find overdue loans\n";
+                            output += "----------------------------------------\n";
+                            output += "No overdue loans found.\n";
+                        } else if (queryType === 'Member Fines') {
+                            output += "Query: Calculate total fines by member\n";
+                            output += "----------------------------------------\n";
+                            output += "No outstanding fines found.\n";
+                        } else if (queryType === 'Popular Books') {
+                            output += "Query: Most popular books (by number of loans)\n";
+                            output += "----------------------------------------\n";
+                            output += "title                    | author              | times_borrowed\n";
+                            output += "-------------------------|---------------------|---------------\n";
+                            output += "1984                     | George Orwell       | 12\n";
+                            output += "The Great Gatsby         | F. Scott Fitzgerald | 8\n";
+                            output += "To Kill a Mockingbird    | Harper Lee          | 6\n";
+                            output += "Pride and Prejudice      | Jane Austen         | 4\n";
+                        }
+                        break;
+                        
+                    case 2: // E-commerce
+                        const reportType = inputs.reportType || 'Customer Orders';
+                        
+                        output = "=== E-commerce Database System ===\n\n";
+                        
+                        if (reportType === 'Customer Orders') {
+                            output += "Query: Customer order history\n";
+                            output += "------------------------------------------------------------\n";
+                            output += "Customer        | Order ID | Order Date  | Total   | Status\n";
+                            output += "----------------|----------|-------------|---------|--------\n";
+                            output += "Alice Johnson   | 1001     | 2023-10-15  | $899.99 | Delivered\n";
+                            output += "Bob Wilson      | 1002     | 2023-10-18  | $219.98 | Processing\n";
+                        } else if (reportType === 'Product Sales') {
+                            output += "Query: Total sales by product\n";
+                            output += "------------------------------------------------\n";
+                            output += "Product              | Total Sold | Revenue\n";
+                            output += "---------------------|------------|---------\n";
+                            output += "Smartphone X         | 45         | $31,499.55\n";
+                            output += "Wireless Headphones  | 28         | $5,599.72\n";
+                            output += "Cotton T-Shirt       | 120        | $2,398.80\n";
+                        } else if (reportType === 'Low Stock') {
+                            output += "Query: Low stock products\n";
+                            output += "--------------------------------\n";
+                            output += "Product              | Stock\n";
+                            output += "---------------------|-------\n";
+                            output += "Wireless Headphones  | 3\n";
+                        } else if (reportType === 'Monthly Sales') {
+                            output += "Query: Monthly sales report\n";
+                            output += "----------------------------------------\n";
+                            output += "Year | Month | Orders | Revenue\n";
+                            output += "-----|-------|--------|---------\n";
+                            output += "2023 | 10    | 45     | $12,450.75\n";
+                            output += "2023 | 9     | 38     | $9,875.20\n";
+                            output += "2023 | 8     | 42     | $11,230.50\n";
+                        }
+                        break;
+                        
+                    case 3: // Employee Management
+                        const empQueryType = inputs.queryType || 'Department Stats';
+                        
+                        output = "=== Employee Management System ===\n\n";
+                        
+                        if (empQueryType === 'Department Stats') {
+                            output += "Query: Department employee count and average salary\n";
+                            output += "----------------------------------------------------\n";
+                            output += "Department  | Employees | Avg Salary\n";
+                            output += "------------|-----------|------------\n";
+                            output += "Engineering | 15        | $95,000\n";
+                            output += "Sales       | 8         | $87,500\n";
+                            output += "HR          | 5         | $72,000\n";
+                        } else if (empQueryType === 'Employee Hierarchy') {
+                            output += "Query: Employee hierarchy\n";
+                            output += "----------------------------------------------------\n";
+                            output += "Employee        | Title              | Manager\n";
+                            output += "----------------|--------------------|----------------\n";
+                            output += "John Davis      | Software Engineer  | Sarah Miller\n";
+                            output += "Sarah Miller    | Senior Engineer    | (None)\n";
+                            output += "Mike Johnson    | Sales Manager      | (None)\n";
+                        } else if (empQueryType === 'Project Assignments') {
+                            output += "Query: Project assignments with hours\n";
+                            output += "----------------------------------------------------\n";
+                            output += "Project           | Employee     | Role        | Hours\n";
+                            output += "------------------|--------------|-------------|-------\n";
+                            output += "Website Redesign  | John Davis   | Developer   | 120.5\n";
+                            output += "Website Redesign  | Sarah Miller | Lead        | 85.0\n";
+                            output += "CRM Implementation| Mike Johnson | Manager     | 60.0\n";
+                        } else if (empQueryType === 'Top Performers') {
+                            output += "Query: Top performing employees\n";
+                            output += "----------------------------------------------------\n";
+                            output += "Employee        | Title              | Avg Rating\n";
+                            output += "----------------|--------------------|------------\n";
+                            output += "Sarah Miller    | Senior Engineer    | 4.8\n";
+                            output += "John Davis      | Software Engineer  | 4.5\n";
+                            output += "Mike Johnson    | Sales Manager      | 4.3\n";
+                        }
+                        break;
+                        
+                    case 4: // University Management
+                        const uniQueryType = inputs.queryType || 'Student Grades';
+                        
+                        output = "=== University Course Management ===\n\n";
+                        
+                        if (uniQueryType === 'Student Grades') {
+                            output += "Query: Student course enrollments with grades\n";
+                            output += "----------------------------------------------------\n";
+                            output += "Student      | Course | Semester | Year | Grade\n";
+                            output += "-------------|--------|----------|------|-------\n";
+                            output += "John Student | CS101  | Fall     | 2022 | 3.8\n";
+                            output += "John Student | MATH101| Fall     | 2022 | 3.5\n";
+                            output += "Sarah Learner| CS101  | Fall     | 2022 | 3.9\n";
+                            output += "Mike Scholar | MATH101| Fall     | 2022 | 3.2\n";
+                        } else if (uniQueryType === 'Course Stats') {
+                            output += "Query: Course enrollment statistics\n";
+                            output += "----------------------------------------------------\n";
+                            output += "Course | Title                  | Enrollments | Avg Grade\n";
+                            output += "-------|------------------------|-------------|----------\n";
+                            output += "CS101  | Intro to Programming   | 45          | 3.7\n";
+                            output += "MATH101| Calculus I             | 38          | 3.4\n";
+                            output += "CS201  | Data Structures        | 32          | 3.5\n";
+                        } else if (uniQueryType === 'Instructor Load') {
+                            output += "Query: Instructor teaching load\n";
+                            output += "----------------------------------------------------\n";
+                            output += "Instructor     | Sections | Total Students\n";
+                            output += "---------------|----------|----------------\n";
+                            output += "Alice Johnson  | 3        | 85\n";
+                            output += "David Wilson   | 2        | 64\n";
+                            output += "Emily Brown    | 2        | 76\n";
+                        } else if (uniQueryType === 'Graduation Eligibility') {
+                            output += "Query: Students eligible for graduation\n";
+                            output += "----------------------------------------------------\n";
+                            output += "Student      | Enrollment | Credits | GPA\n";
+                            output += "-------------|------------|---------|-----\n";
+                            output += "John Student | 2022-08-20 | 124     | 3.65\n";
+                            output += "Sarah Learner| 2022-08-20 | 128     | 3.72\n";
+                        }
+                        break;
+                        
+                    case 5: // Hospital Management
+                        const hospQueryType = inputs.queryType || 'Doctor Schedule';
+                        
+                        output = "=== Hospital Patient Records System ===\n\n";
+                        
+                        if (hospQueryType === 'Doctor Schedule') {
+                            output += "Query: Doctor appointment schedule for today\n";
+                            output += "----------------------------------------------------\n";
+                            output += "Doctor        | Specialization | Time  | Patient\n";
+                            output += "--------------|----------------|-------|----------------\n";
+                            output += "Michael Chen  | Cardiology     | 09:00 | John Doe\n";
+                            output += "Michael Chen  | Cardiology     | 10:30 | Robert Johnson\n";
+                            output += "Sarah Williams| Pediatrics     | 11:00 | Jane Smith\n";
+                        } else if (hospQueryType === 'Patient History') {
+                            output += "Query: Patient medical history (Patient ID: 1)\n";
+                            output += "----------------------------------------------------\n";
+                            output += "Date       | Diagnosis          | Doctor\n";
+                            output += "-----------|--------------------|----------------\n";
+                            output += "2023-09-15 | Hypertension       | Michael Chen\n";
+                            output += "2023-07-22 | Annual Checkup     | Sarah Williams\n";
+                            output += "2023-03-10 | Flu                | David Brown\n";
+                        } else if (hospQueryType === 'Outstanding Bills') {
+                            output += "Query: Outstanding patient bills\n";
+                            output += "----------------------------------------------------\n";
+                            output += "Patient      | Bill Date | Amount  | Due Date  | Status\n";
+                            output += "-------------|-----------|---------|-----------|--------\n";
+                            output += "John Doe     | 2023-10-01| $250.00 | 2023-11-01| Pending\n";
+                            output += "Jane Smith   | 2023-09-15| $180.00 | 2023-10-15| Overdue\n";
+                        } else if (hospQueryType === 'Common Diagnoses') {
+                            output += "Query: Most common diagnoses\n";
+                            output += "----------------------------------------\n";
+                            output += "Diagnosis          | Frequency\n";
+                            output += "-------------------|----------\n";
+                            output += "Hypertension       | 45\n";
+                            output += "Annual Checkup     | 38\n";
+                            output += "Diabetes           | 32\n";
+                            output += "Flu                | 28\n";
+                        } else if (hospQueryType === 'Doctor Workload') {
+                            output += "Query: Doctor patient load (last 30 days)\n";
+                            output += "----------------------------------------------------\n";
+                            output += "Doctor        | Specialization | Patients | Appointments\n";
+                            output += "--------------|----------------|----------|-------------\n";
+                            output += "Michael Chen  | Cardiology     | 85       | 120\n";
+                            output += "Sarah Williams| Pediatrics     | 92       | 145\n";
+                            output += "David Brown   | Orthopedics    | 78       | 110\n";
+                        }
+                        break;
+                        
+                    default:
+                        output = "SQL query executed successfully.";
+                }
+                
+                outputElement.innerHTML = output;
+            }, 1000);
+        }
+
+        // Scroll animations
+        function handleScrollAnimations() {
+            const elements = document.querySelectorAll('.fade-in');
+            
+            elements.forEach(el => {
+                const elementTop = el.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    el.classList.add('active');
+                }
+            });
+        }
+
+        // Initialize scroll animations
+        window.addEventListener('scroll', handleScrollAnimations);
+        window.addEventListener('load', handleScrollAnimations);
+    </script>
+</body>
+</html>
+
